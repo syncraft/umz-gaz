@@ -36,7 +36,7 @@ module.exports = function(server) {
     async function removeUpload(id) {
       if (id in uploads) {
         try {
-          await unlink(`${process.env.attachmentsDirectory}/${id}`);
+          await unlink(`${process.env.ATTACHMENTS_DIRECTORY}/${id}`);
         } catch (error) {
           console.error(error);
         } finally {
@@ -207,11 +207,11 @@ module.exports = function(server) {
             const buffer = new Buffer(new Uint8Array(data));
     
             try {
-              if (!(await exists(process.env.attachmentsDirectory))) {
-                await mkdir(process.env.attachmentsDirectory);
+              if (!(await exists(process.env.ATTACHMENTS_DIRECTORY))) {
+                await mkdir(process.env.ATTACHMENTS_DIRECTORY);
               }
     
-              const file = await open(`${process.env.attachmentsDirectory}/${id}`, 'a');
+              const file = await open(`${process.env.ATTACHMENTS_DIRECTORY}/${id}`, 'a');
               await write(file, buffer);
               await close(file);
             } catch (e) {
@@ -317,7 +317,7 @@ module.exports = function(server) {
       try {
         sendmail(
           {
-            from: `noreply@${url.parse(process.env.url).hostname}`,
+            from: `noreply@${url.parse(process.env.URL).hostname}`,
             to: 'zyxd@syncraft.ru',
             subject: 'Сообщение с сайта umz-gaz.ru',
             text: `

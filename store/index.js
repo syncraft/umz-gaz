@@ -348,7 +348,7 @@ export default function() {
       token: {},
       path: '',
       pages: [],
-      url: process.env.url
+      url: process.env.URL
     }
   });
 };

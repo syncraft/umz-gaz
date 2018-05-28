@@ -50,16 +50,16 @@ schema.path('page').validate(async value => {
 }, 'Page not found');
 
 schema.virtual('url').get(function() {
-  return `${process.env.url}/${process.env.attachmentsDirectory}/${this.id}/${this.name}`;
+  return `${process.env.URL}/${process.env.ATTACHMENTS_DIRECTORY}/${this.id}/${this.name}`;
 });
 
 schema.virtual('url_thumbnail').get(function() {
-  return `${process.env.url}/${process.env.attachmentsDirectory}/${this.id}/${this.name}.thumbnail.jpg`;
+  return `${process.env.URL}/${process.env.ATTACHMENTS_DIRECTORY}/${this.id}/${this.name}.thumbnail.jpg`;
 });
 
 schema.pre('remove', async function(next) {
   try {
-    await unlink(`${process.env.attachmentsDirectory}/${this.id}`);
+    await unlink(`${process.env.ATTACHMENTS_DIRECTORY}/${this.id}`);
   } catch (error) {
     // throw new Error('Cannot remove attachment file');
   }

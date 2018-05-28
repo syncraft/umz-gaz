@@ -8,7 +8,7 @@ const app = require('express')();
 app.get('/:id/:name.thumbnail.jpg', async (request, response, next) => {
   try {
     const attachment = await Attachment.findOne({ _id: request.params.id, name: request.params.name });
-    const file = `${process.env.attachmentsDirectory}/${attachment.id}`;
+    const file = `${process.env.ATTACHMENTS_DIRECTORY}/${attachment.id}`;
 
     if (attachment) {
       const etagGenerated = etag(attachment.url + JSON.stringify(request.query));
@@ -96,7 +96,7 @@ app.get('/:id/:name', async (request, response, next) => {
 
     if (attachment) {
       response.contentType(attachment.type);
-      response.sendFile(path.resolve(`${process.env.attachmentsDirectory}/${attachment.id}`));
+      response.sendFile(path.resolve(`${process.env.ATTACHMENTS_DIRECTORY}/${attachment.id}`));
     } else {
       return next({ code: 404 });
     }
