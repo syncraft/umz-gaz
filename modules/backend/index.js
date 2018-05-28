@@ -14,7 +14,7 @@ module.exports = function() {
     try {
       await mongoose.connect('mongodb://localhost/umz2');
     } catch (error) {
-      throw 'Could not connect to database';
+      throw error;
     }
 
     socket(server);
