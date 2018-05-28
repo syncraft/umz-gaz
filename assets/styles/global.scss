@@ -1,0 +1,62 @@
+@import "~@/assets/styles/variables";
+@import "~@/assets/styles/fonts";
+
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
+@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular";
+
+html {
+  min-height: 100%;
+  position: relative;
+  font-size: 14px;
+}
+
+html, body {
+  background-color: #f4f4f4;
+}
+
+.umz-font-bold {
+  font-family: $umz-font-bold;
+}
+
+.umz-font-medium {
+  font-family: $umz-font-medium;
+}
+
+.umz-font-regular {
+  font-family: $umz-font-regular;
+}
+
+.umz-font-wide {
+  letter-spacing: 1.1px;
+}
+
+// Transitions
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+}
+
+.list-move {
+  transition: transform 0.3s;
+}
+
+
+
+.slide-enter-active, .slide-leave-active {
+  transition: max-height 0.3s, opacity 0.3s, transform 0.3s;
+  overflow: hidden;
+  max-height: 300px;
+  opacity: 1;
+}
+
+.slide-enter, .slide-leave-to {
+  max-height: 0px;
+  opacity: 0;
+  transform: translateY(-30px);
+}

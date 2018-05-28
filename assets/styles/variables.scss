@@ -1,0 +1,70 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Font Awesome
+$fa-font-path: "~@fortawesome/fontawesome-free-webfonts/webfonts";
+
+// Colors
+$theme-colors: (
+  "primary":    rgb(0, 86, 147),
+  "dark":       rgb(37, 43, 51),
+  "black":      rgb(0, 0, 0),
+  "white":      rgb(255, 255, 255),
+  "light":      $light,
+  "gray-100":   $gray-100,
+  "gray-200":   $gray-200,
+  "gray-300":   $gray-300,
+  "gray-400":   $gray-400,
+  "gray-500":   $gray-500,
+  "gray-600":   $gray-600,
+  "gray-700":   $gray-700,
+  "gray-800":   $gray-800,
+  "gray-900":   $gray-900
+);
+
+// Breadcrumb
+$breadcrumb-bg: initial;
+$breadcrumb-padding-x: 0;
+$breadcrumb-padding-y: 0;
+
+// Card
+$card-spacer-y: .5rem;
+$card-spacer-x: .75rem;
+
+// Link
+$link-color: #337ab7;
+
+// Space
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 5),
+  7: ($spacer * 8),
+  8: ($spacer * 12),
+  9: ($spacer * 17),
+  10: ($spacer * 23),
+  11: ($spacer * 28),
+  12: ($spacer * 33),
+  13: ($spacer * 38),
+  14: ($spacer * 43),
+  15: ($spacer * 48),
+  16: ($spacer * 53),
+  17: ($spacer * 58),
+  18: ($spacer * 63),
+  19: ($spacer * 68),
+  20: ($spacer * 73),
+);
+
+// Header
+$headings-margin-bottom: $spacer;
+
+// Fonts
+$umz-font-bold: "geometriabold", Arial, FreeSans, sans-serif;
+$umz-font-medium: "geometriamedium", Arial, FreeSans, sans-serif;
+$umz-font-regular: "geometriaregular", Arial, FreeSans, sans-serif;
