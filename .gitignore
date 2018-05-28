@@ -12,3 +12,6 @@ dist
 
 # Attachments
 attachments
+
+# DS_Store
+.DS_Store
