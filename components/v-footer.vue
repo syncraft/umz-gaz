@@ -72,6 +72,7 @@ footer {
   }
 
   hr {
+    width: 100%;
     border-bottom: 1px solid #414345;
   }
 
