@@ -19,6 +19,10 @@
             </div>
           </div>
         </div>
+
+        <div class="col-2 col-md-1 align-self-center text-right">
+          <a class="fab fa-github text-white" href="https://github.com/syncraft/umz-gaz.ru"></a>
+        </div>
       </div>
 
       <hr class="my-4 my-md-5">
@@ -90,6 +94,11 @@ footer {
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  .fa-github {
+    font-size: 1.8rem;
+    text-decoration: none;
   }
 }
 </style>
