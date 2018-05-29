@@ -20,7 +20,7 @@
 
         <div class="col-12 col-md-5">
           <div class="intro mb-5 mb-lg-0">
-            {{ $store.state.pages.find(page => page.path === '/catalog/autoengine-gaz').content }}
+            {{ enginesGazContent }}
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
 
         <div class="col-12 col-md-5">
           <div class="intro mb-5 mb-lg-0">
-            {{ $store.state.pages.find(page => page.path === '/catalog/autoengine-uaz').content }}
+            {{ enginesUazContent }}
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
     </v-slide>
     
     <h5 class="mt-6 mb-4">Новости</h5>
-    <v-news-list :pages="media" :limit="6" fixed></v-news-list>
+    <v-news-list :pages="media" fixed></v-news-list>
 
     <v-content v-if="$store.getters.page && $store.getters.page.content" :content="$store.getters.page.content"/>
   </section>
@@ -115,6 +115,22 @@ export default {
   }),
 
   computed: {
+    enginesGazContent() {
+      const page = this.$store.state.pages.find(page => page.path === '/catalog/autoengine-gaz');
+
+      if (page) {
+        return page.content;
+      }
+    },
+
+    enginesUazContent() {
+      const page = this.$store.state.pages.find(page => page.path === '/catalog/autoengine-uaz');
+
+      if (page) {
+        return page.content;
+      }
+    },
+
     enginesGaz() {
       return this.$store.state.pages
         .filter(page => RegExp(`/catalog/autoengine-gaz/.+`).test(page.path))
@@ -129,19 +145,33 @@ export default {
 
     media() {
       return this.$store.state.pages
-        .filter(page => RegExp(`/media/.+`).test(page.path) && page.depth === 3);
+        .filter(page => RegExp(`/media/.+`).test(page.path) && page.depth === 3)
+        .sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
     }
   },
 
   async fetch({ store }) {
-    await store.dispatch('fetchPage', { path: '/catalog/autoengine-gaz' });
-    await store.dispatch('fetchPageChildren', { path: '/catalog/autoengine-gaz' });
-    
-    await store.dispatch('fetchPage', { path: '/catalog/autoengine-uaz' });
-    await store.dispatch('fetchPageChildren', { path: '/catalog/autoengine-uaz' });
+    store.commit('updatePages', {
+      pages: await store.dispatch('searchPages', {
+        path: '/catalog/autoengine-gaz.*'
+      })
+    });
 
-    await store.dispatch('fetchPageChildren', { path: '/media/news' });
-    await store.dispatch('fetchPageChildren', { path: '/media/press' });
+    store.commit('updatePages', {
+      pages: await store.dispatch('searchPages', {
+        path: '/catalog/autoengine-uaz.*'
+      })
+    });
+
+    store.commit('updatePages', {
+      pages: await store.dispatch('searchPages', {
+        path: '/media/.+',
+        sort: 'datePublished',
+        order: 'desc',
+        depth: 3,
+        limit: 6
+      })
+    });
   }
 }
 </script>
