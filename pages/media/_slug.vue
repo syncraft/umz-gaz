@@ -1,6 +1,5 @@
 <template>
   <div class="container pb-5">
-    {{ pages.length }}
     <v-news-list
       @contextmenu="$parent.$emit('contextmenupage', $event)"
       @more="fetchMediaMore()"
