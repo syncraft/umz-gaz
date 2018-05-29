@@ -160,13 +160,13 @@ export default {
         }
       }
     }
-  }
 
-  a:hover {
-    background-color: #e6e6e6;
+    &:hover {
+      background-color: #e6e6e6;
 
-    .image {
-      transform: scale(1.03);
+      img {
+        transform: scale(1.03);
+      }
     }
   }
 
