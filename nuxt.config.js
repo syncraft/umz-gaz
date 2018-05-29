@@ -53,7 +53,7 @@ module.exports = {
   // This undocumented hooks triggered before 'Nuxt.listen()'
   hooks: {
     listen(server) {
-      require('./modules/backend/server')(server);
+      require('./modules/backend/socket')(server);
     }
   },
 

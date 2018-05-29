@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const server = require('./server')();
 const socket = require('./socket');
 
 module.exports = async function() {
@@ -8,16 +7,14 @@ module.exports = async function() {
   process.env.MONGODB_COLLECTION = process.env.MONGODB_COLLECTION || 'umz';
   process.env.ATTACHMENTS_DIRECTORY = process.env.ATTACHMENTS_DIRECTORY || 'attachments';
 
-  this.addServerMiddleware({
-    path: '/attachments',
-    handler: '~/modules/backend/attachments'
-  });
-    
   try {
     await mongoose.connect(`mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_COLLECTION}`);
   } catch (error) {
     throw error;
   }
 
-  socket(server);
+  this.addServerMiddleware({
+    path: '/attachments',
+    handler: '~/modules/backend/attachments'
+  });
 }
