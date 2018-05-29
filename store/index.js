@@ -1,5 +1,4 @@
 import Vuex from 'vuex';
-import socket from '~/plugins/socket';
 
 export default function() {
   return new Vuex.Store({
@@ -9,19 +8,19 @@ export default function() {
       },
 
       async nuxtClientInit({ commit }) {
-        socket.on('createPages', ({ data, error }) => {
+        this.$socket.on('createPages', ({ data, error }) => {
           if (!error) {
             commit('updatePages', { pages: data });
           }
         });
     
-        socket.on('deletePages', ({ data, error }) => {
+        this.$socket.on('deletePages', ({ data, error }) => {
           if (!error) {
             commit('deletePages', { pages: data });
           }
         });
     
-        socket.on('updatePages', ({ data, error }) => {
+        this.$socket.on('updatePages', ({ data, error }) => {
           if (!error) {
             commit('updatePages', { pages: data });
           }
@@ -68,25 +67,9 @@ export default function() {
         });
       },
 
-      fetchPageChildren({ commit, dispatch }, { path }) {
-        return new Promise(async (resolve, reject) => {
-          try {
-            const pages = await dispatch('searchPages', { path: `${path}/.+` });
-
-            if (pages.length > 0) {
-              commit('updatePages', { pages });
-            }
-
-            resolve(pages);
-          } catch (error) {
-            reject(error);
-          }
-        });
-      },
-
       searchPages({}, conditions) {
         return new Promise((resolve, reject) => {
-          socket.emit('searchPages', conditions, ({ data, error }) => {
+          this.$socket.emit('searchPages', conditions, ({ data, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -100,7 +83,7 @@ export default function() {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
-          socket.emit('createPages', { token, pages }, ({ data, error }) => {
+          this.$socket.emit('createPages', { token, pages }, ({ data, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -115,7 +98,7 @@ export default function() {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
-          socket.emit('deletePages', { token, pages }, ({ data, error }) => {
+          this.$socket.emit('deletePages', { token, pages }, ({ data, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -130,7 +113,7 @@ export default function() {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
-          socket.emit('updatePages', { token, pages }, ({ data, error }) => {
+          this.$socket.emit('updatePages', { token, pages }, ({ data, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -152,7 +135,7 @@ export default function() {
 
             reader.onload = (event) => {
               if (event.target.readyState === FileReader.DONE) {
-                socket.emit('uploadAttachmentData', { token, id, data: event.target.result }, ({ error }) => {
+                this.$socket.emit('uploadAttachmentData', { token, id, data: event.target.result }, ({ error }) => {
                   if (error) {
                     reject(error);
                   } else {
@@ -171,7 +154,7 @@ export default function() {
               const size = file.size;
               const type = file.type;
 
-              socket.emit('uploadAttachment', { token, name, size, type, page: page.id }, async ({ id, error }) => {
+              this.$socket.emit('uploadAttachment', { token, name, size, type, page: page.id }, async ({ id, error }) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -187,7 +170,7 @@ export default function() {
                     await uploadData(file, offset, end, id);
                   }
 
-                  socket.emit('uploadAttachmentDone', { token, id }, ({ data, error }) => {
+                  this.$socket.emit('uploadAttachmentDone', { token, id }, ({ data, error }) => {
                     if (error) {
                       reject(error);
                     } else {
@@ -208,7 +191,7 @@ export default function() {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
-          socket.emit('deleteAttachments', { token, attachments }, ({ data, error }) => {
+          this.$socket.emit('deleteAttachments', { token, attachments }, ({ data, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -221,7 +204,7 @@ export default function() {
 
       sendEmail: ({}, { form }) => {
         return new Promise((resolve, reject) => {
-          socket.emit('sendEmail', { form }, ({ error }) => {
+          this.$socket.emit('sendEmail', { form }, ({ error }) => {
             if (error) {
               reject(error);
             } else {
@@ -233,7 +216,7 @@ export default function() {
 
       login: ({ commit }, { username, password }) => {
         return new Promise((resolve, reject) => {
-          socket.emit('login', { username, password }, ({ token, error }) => {
+          this.$socket.emit('login', { username, password }, ({ token, error }) => {
             if (error) {
               reject(error);
             } else {
@@ -249,7 +232,7 @@ export default function() {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
-          socket.emit('logout', { token }, ({ error }) => {
+          this.$socket.emit('logout', { token }, ({ error }) => {
             commit('setToken', { token: '' });
             commit('disableManager');
 
