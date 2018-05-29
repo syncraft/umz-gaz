@@ -52,7 +52,7 @@ module.exports = function(server) {
       }
     });
 
-    socket.on('searchPages', async ({ projection, id, parent, path, component, depth = 999, limit = 50, skip = 0, sort = 'order', order = 'asc' } = {}, callback) => {
+    socket.on('searchPages', async ({ projection, id, parent, path, component, depth, limit = 50, skip = 0, sort = 'order', order = 'asc' } = {}, callback) => {
       let data = [];
       let error;
 
@@ -71,7 +71,7 @@ module.exports = function(server) {
             return false;
           }
 
-          if (page.depth > depth) {
+          if (depth && page.depth !== depth) {
             return false;
           }
 
