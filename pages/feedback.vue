@@ -25,6 +25,10 @@ export default {
     async sendEmail({ form }) {
       this.$store.dispatch('sendEmail', { form });
     }
+  },
+
+  async fetch({ app }) {
+    await app.$prefetch();
   }
 }
 </script>

@@ -150,7 +150,9 @@ export default {
     }
   },
 
-  async fetch({ store }) {
+  async fetch({ app, store }) {
+    await app.$prefetch();
+    
     store.commit('updatePages', {
       pages: await store.dispatch('searchPages', {
         path: '/catalog/autoengine-gaz.*'

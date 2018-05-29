@@ -77,6 +77,10 @@ export default {
         }
       }
     }
+  },
+
+  async fetch({ app }) {
+    await app.$prefetch();
   }
 }
 </script>

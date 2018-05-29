@@ -59,6 +59,7 @@ module.exports = {
 
   plugins: [
     '~/plugins/socket',
+    '~/plugins/prefetch',
     {
       src: '~/plugins/nuxt-client-init.js',
       ssr: false
@@ -75,10 +76,6 @@ module.exports = {
         path: '*',
         component: resolve(__dirname, 'pages/article.vue')
       })
-    },
-
-    middleware: [
-      'fetch'
-    ]
+    }
   }
 }

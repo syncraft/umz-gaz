@@ -9,7 +9,7 @@
 
     <v-engine-list
       class="mt-6"
-      :pages="$store.getters.children"
+      :pages="$store.getters.children.filter(page => page.depth === 3)"
       @contextmenu="$parent.$emit('contextmenu', $event)"
     />
   </div>
@@ -25,8 +25,17 @@ export default {
     VEngineList
   },
 
-  async fetch({ store }) {
-    await store.dispatch('fetchPageChildren', { path: store.state.path });
+  async fetch({ app, route, store }) {
+    await app.$prefetch();
+    
+    store.commit('updatePages', {
+      pages: await store.dispatch('searchPages', {
+        path: `/catalog/${route.params.slug || ''}.+`,
+        sort: 'datePublished',
+        order: 'desc',
+        depth: 3
+      })
+    });
   }
 }
 </script>

@@ -3,7 +3,7 @@
     <v-news-list
       @contextmenu="$parent.$emit('contextmenupage', $event)"
       @more="fetchMediaMore()"
-      :pages="pages"
+      :pages="$store.getters.children.filter(page => page.depth === 3).sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished))"
     />
   </div>
 </template>
@@ -20,15 +20,9 @@ export default {
     skip: 6
   }),
 
-  computed: {
-    pages() {
-      return this.$store.getters.children
-        .filter(page => RegExp(`/media/.+`).test(page.path) && page.depth === 3)
-        .sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
-    }
-  },
+  async fetch({ app, store, params }) {
+    await app.$prefetch();
 
-  async fetch({ store, params }) {
     store.commit('updatePages', {
       pages: await store.dispatch('searchPages', {
         path: `/media/${params.slug || ''}.+`,
@@ -42,6 +36,8 @@ export default {
 
   methods: {
     async fetchMediaMore() {
+      this.$nuxt.$loading.start();
+      
       this.$store.commit('updatePages', {
         pages: await this.$store.dispatch('searchPages', {
           path: `/media/${this.$route.params.slug || ''}.+`,
@@ -54,6 +50,7 @@ export default {
       });
 
       this.skip += 3;
+      this.$nuxt.$loading.finish();
     }
   }
 }
