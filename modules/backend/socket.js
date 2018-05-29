@@ -16,6 +16,7 @@ const close = util.promisify(fs.close);
 const unlink = util.promisify(fs.unlink);
 
 module.exports = function(server) {
+  mongoose.connect(`mongodb://${process.env.MONGODB_HOST}/${process.env.MONGODB_COLLECTION}`);
   const io = require('socket.io')(server);
 
   io.on('connection', (socket) => {
