@@ -36,9 +36,12 @@ export default {
 
 .card {
   display: block;
-  color: inherit;
   margin-bottom: 2rem;
   transition: border 0.2s linear;
+
+  a {
+    color: inherit;
+  }
 
   .card-body {
     font-size: 0.8rem;
