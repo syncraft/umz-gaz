@@ -44,7 +44,7 @@ export default {
   }
 
   .card-body {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .card-img-top {
