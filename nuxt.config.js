@@ -42,7 +42,7 @@ module.exports = {
 
   loading: {
     color: 'rgb(200, 0, 0)',
-    height: '3px'
+    height: '4px'
   },
 
   modules: [
