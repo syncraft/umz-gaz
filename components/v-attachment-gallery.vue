@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-6 col-sm-4 col-md-3 d-flex" v-for="attachment in attachments" :key="attachment.id">      
+    <div class="col-6 col-sm-4 col-lg-3 d-flex" v-for="attachment in attachments" :key="attachment.id">      
       <div class="card w-100">
         <a :href="attachment.url">
           <v-attachment class="card-img-top" :id="attachment.id" :link="false" :thumbnail="{ width: 300, height: 300 }"></v-attachment>
@@ -32,6 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/styles/variables";
+
 .card {
   display: block;
   color: inherit;
@@ -44,14 +46,22 @@ export default {
 
   .card-img-top {
     width: 100%;
-    height: 14rem;
+    height: 10rem;
     object-fit: cover;
     overflow: hidden;
-    object-position: center center;
+    object-position: top center;
   }
 
   &:hover {
     border-color: theme-color("primary");
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .card {
+    .card-img-top {
+      height: 15rem;
+    }
   }
 }
 </style>
