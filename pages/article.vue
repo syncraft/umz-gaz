@@ -1,6 +1,6 @@
 <template>
   <div v-if="$store.getters.page" class="container pb-5">
-    <div v-if="root.path === '/media'" class="mb-4">
+    <div v-if="root.path === '/media' && $store.getters.page.depth > 1" class="mb-4">
       <div class="row">
         <div class="col d-flex align-items-center text-muted small">
           <span class="pr-4">
