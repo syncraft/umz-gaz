@@ -15,4 +15,4 @@ $ npm run build
 $ npm start
 
 # launch server at example.com:80
-$ HOST=example.com PORT=80 npm start
+$ URL=http://example.com HOST=example.com PORT=80 npm start
