@@ -49,6 +49,14 @@ module.exports = {
     '~/modules/backend'
   ],
 
+  // Dirty trick to bypass Nuxt "bug" that sometimes ignoring 'listen' hooks
+  // This undocumented hooks triggered before 'Nuxt.listen()'
+  hooks: {
+    listen(server) {
+      require('./modules/backend/server')(server);
+    }
+  },
+
   plugins: [
     '~/plugins/socket',
     {
