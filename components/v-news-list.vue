@@ -139,17 +139,17 @@ export default {
       background-color: #252b33;
   
       .day {
-        font-size: 2rem;
-        line-height: 2rem;
+        font-size: 2.4rem;
+        line-height: 2.4rem;
       }
   
       .month, .year {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
     }
   
     .category {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       letter-spacing: 0.02rem;
 
       a {
