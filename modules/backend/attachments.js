@@ -42,7 +42,7 @@ app.get('/:id/:name.thumbnail.jpg', async (request, response, next) => {
               .on('progress', () => written = true)
               .on('end', () => {
                 if (!written) {
-                  response.sendFile(path.resolve(__dirname, '../assets/images/no-image.jpg'));
+                  response.sendFile(path.resolve(__dirname, '../../assets/images/no-image.jpg'));
                 } else {
                   response.end();
                 }
@@ -66,7 +66,7 @@ app.get('/:id/:name.thumbnail.jpg', async (request, response, next) => {
               .on('data', () => written = true)
               .on('end', () => {
                 if (!written) {
-                  response.sendFile(path.resolve(__dirname, '../assets/images/no-image.jpg'));
+                  response.sendFile(path.resolve(__dirname, '../../assets/images/no-image.jpg'));
                 } else {
                   response.end();
                 }
