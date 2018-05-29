@@ -14,7 +14,7 @@
 
         <div class="col">
           <div class="row no-gutters h-100">
-            <div v-for="page in pages" :key="page.id" class="col-6 col-lg-4 mb-2">
+            <div v-for="page in pages" :key="page.id" class="col-6 col-lg-4 my-1">
               <nuxt-link class="item" :to="page.path">{{ page.title }}</nuxt-link>
             </div>
           </div>
