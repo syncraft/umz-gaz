@@ -58,9 +58,9 @@
       </div>
     </div>
 
-    <!-- <button v-if="!fixed && pages.length >= limit + more" @click="showMore()" class="more">
+    <button v-if="!fixed" @click="$emit('more')" class="more">
       Показать еще
-    </button> -->
+    </button>
   </div>
 </template>
 
@@ -70,45 +70,10 @@ import * as moment from 'moment';
 export default {
   props: {
     pages: { type: Array, required: true },
-    fixed: { type: Boolean, default: false },
-    limit: { type: Number, default: 6 }
+    fixed: { type: Boolean, default: false }
   },
-
-  data: () => ({
-    more: 0
-  }),
-
-  computed: {
-    pagesSorted() {
-      return this.pages.slice().sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
-    }
-  },
-
-  // watch: {
-  //   pages: function(pages) {
-  //     if (pages.length < this.limit) {
-  //       this.fetch(1, this.limit - 1);
-  //     }
-  //   }
-  // },
 
   methods: {
-    // async fetch(limit, skip) {
-    //   this.$store.commit('CREATE_PAGES', await this.$store.dispatch('SEARCH_PAGES', {
-    //     path: `${this.path}/.+`,
-    //     component: 'v-article',
-    //     sort: 'datePublished',
-    //     order: 'desc',
-    //     limit,
-    //     skip
-    //   }));
-    // },
-
-    async showMore() {
-      this.fetch(3, this.limit);
-      this.more += 3;
-    },
-
     image(page) {
       if (page.image) {
         const attachment = page.attachments.find(value => value.id === page.image);
