@@ -1,5 +1,5 @@
 <template>
-  <a v-if="attachment && thumbnail && link" :href="attachment.url">
+  <a v-if="attachment && thumbnail && link" :href="attachment.url" class="d-block">
     <img :src="url_thumbnail">
   </a>
 
@@ -11,14 +11,21 @@
     <a v-if="link" :href="attachment.url">Скачать</a>.
   </video>
 
+  <a v-else-if="attachment && link && image" :href="attachment.url" class="d-block">
+    <img :src="attachment.url">
+  </a>
+
   <a v-else-if="attachment && link" :href="attachment.url">
-    <img v-if="image" :src="attachment.url">
-    <div v-else>{{ attachment.name }}</div>
+    <template v-if="$slots.default"><slot></slot></template>
+    <template v-else>{{ attachment.name }}</template>
   </a>
 
   <img v-else-if="attachment && image" :src="attachment.url">
 
-  <div v-else-if="attachment">{{ attachment.name }}</div>
+  <span v-else-if="attachment">
+    <template v-if="$slots.default"><slot></slot></template>
+    <template v-else>{{ attachment.name }}</template>
+  </span>
 </template>
 
 <script>
@@ -80,10 +87,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a {
-  display: block;
-}
-
 video {
   width: 100%;
   height: auto;
