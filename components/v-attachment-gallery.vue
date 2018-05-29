@@ -5,7 +5,7 @@
         <a :href="attachment.url">
           <v-attachment class="card-img-top" :id="attachment.id" :link="false" :thumbnail="{ width: 300, height: 300 }"></v-attachment>
           <div class="card-body text-center" v-if="attachment.name">
-            {{ attachment.name }}
+            {{ attachment.name.split('.').slice(0, -1).join('.') }}
           </div>
         </a>
       </div>

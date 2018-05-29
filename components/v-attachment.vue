@@ -17,14 +17,14 @@
 
   <a v-else-if="attachment && link" :href="attachment.url">
     <template v-if="$slots.default"><slot></slot></template>
-    <template v-else>{{ attachment.name }}</template>
+    <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
   </a>
 
   <img v-else-if="attachment && image" :src="attachment.url">
 
   <span v-else-if="attachment">
     <template v-if="$slots.default"><slot></slot></template>
-    <template v-else>{{ attachment.name }}</template>
+    <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
   </span>
 </template>
 
