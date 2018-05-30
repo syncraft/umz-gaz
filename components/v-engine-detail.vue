@@ -79,7 +79,7 @@ export default {
   }
 
   .info, .type {
-    font-size: 1.0rem;
+    font-size: 1.3rem;
   }
 
   .ecology, .life, .power {
