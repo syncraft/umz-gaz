@@ -15,15 +15,10 @@
           class="d-flex flex-column h-100"
         >
           <div class="image-container">
-            <img
-              v-if="image(page)"
-              :src="image(page)"
-            >
-
-            <img
-              v-else
-              src="@/assets/images/no-image.jpg"
-            >
+            <div
+              class="image"
+              :style="image(page) && { 'background-image': `url(${image(page)})` }"
+            />
           </div>
 
           <div style="flex-grow: 1;">
@@ -144,11 +139,17 @@ export default {
     .image-container {
       overflow: hidden;
 
-      img {
+      .image {
         width: 100%;
         height: 250px;
         transition: all 0.2s linear;
-        object-fit: cover;
+        background-size: cover;
+        background-position: center;
+        background-image: url('~/assets/images/no-image.jpg');
+
+        &:hover {
+          transform: scale(1.03);
+        }
       }
     }
   
@@ -180,10 +181,6 @@ export default {
 
     &:hover {
       background-color: #e6e6e6;
-
-      img {
-        transform: scale(1.03);
-      }
     }
   }
 
