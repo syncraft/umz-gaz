@@ -5,7 +5,9 @@
         <li class="breadcrumb-item">
           <router-link
             class="text-muted"
-            to="/">{{ home.title }}
+            to="/"
+          >
+            {{ home.title }}
           </router-link>
         </li>
 
