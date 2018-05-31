@@ -81,7 +81,7 @@
 
 <script>
 import * as moment from 'moment';
-import { slugify } from 'transliteration';
+import * as slugify from 'slugify';
 import VModal from '~/components/v-modal';
 
 export default {

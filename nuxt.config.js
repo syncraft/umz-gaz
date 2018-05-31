@@ -33,10 +33,10 @@ module.exports = {
 
     vendor: [
       'socket.io-client',
-      'transliteration',
       'moment',
       'url',
-      'vue-the-mask'
+      'vue-the-mask',
+      'slugify'
     ]
   },
 
