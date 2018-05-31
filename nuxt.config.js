@@ -32,6 +32,7 @@ module.exports = {
     },
 
     vendor: [
+      'babel-polyfill',
       'socket.io-client',
       'moment',
       'url',
