@@ -109,7 +109,7 @@ export default function() {
         });
       },
 
-      updatePages: ({ commit, state }, { pages }) => {
+      updatePages({ commit, state }, { pages }) {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
@@ -124,7 +124,7 @@ export default function() {
         });
       },
 
-      uploadAttachments: ({ commit, state }, { files, page }) => {
+      uploadAttachments({ commit, state }, { files, page }) {
         const token = state.token;
         
         function uploadData(file, offset, length, id) {
@@ -187,7 +187,7 @@ export default function() {
         });
       },
 
-      deleteAttachments: ({ commit, state }, { attachments }) => {
+      deleteAttachments({ commit, state }, { attachments }) {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
@@ -202,7 +202,7 @@ export default function() {
         });        
       },
 
-      sendEmail: (_, { form }) => {
+      sendEmail(_, { form }) {
         return new Promise((resolve, reject) => {
           this.$socket.emit('sendEmail', { form }, ({ error }) => {
             if (error) {
@@ -214,7 +214,7 @@ export default function() {
         });
       },
 
-      login: ({ commit }, { username, password }) => {
+      login({ commit }, { username, password }) {
         return new Promise((resolve, reject) => {
           this.$socket.emit('login', { username, password }, ({ token, error }) => {
             if (error) {
@@ -228,7 +228,7 @@ export default function() {
         });
       },
 
-      logout: ({ commit, state }) => {
+      logout({ commit, state }) {
         const token = state.token;
 
         return new Promise((resolve, reject) => {
