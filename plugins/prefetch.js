@@ -12,7 +12,7 @@ export default function(context, inject) {
   
       await this.store.dispatch('fetchSubmenu');
     } else {
-      error({ statusCode: 404, message: 'Page not found'});
+      this.context.error({ statusCode: 404, message: 'Page not found'});
     }
   });
 }
