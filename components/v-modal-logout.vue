@@ -1,5 +1,8 @@
 <template>
-  <v-modal v-if="opened" @close="close()">
+  <v-modal
+    v-if="opened"
+    @close="close()"
+  >
     <div slot="header">Выход из режима администрирования</div>
 
     <div>
@@ -7,7 +10,12 @@
     </div>
     
     <div slot="footer">
-      <button class="btn btn-primary" @click="logout()">Выйти</button>
+      <button
+        class="btn btn-primary"
+        @click="logout()"
+      >
+        Выйти
+      </button>
     </div>
   </v-modal>
 </template>

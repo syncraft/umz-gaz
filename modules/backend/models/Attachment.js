@@ -61,7 +61,7 @@ schema.pre('remove', async function(next) {
   try {
     await unlink(`${process.env.ATTACHMENTS_DIRECTORY}/${this.id}`);
   } catch (error) {
-    // throw new Error('Cannot remove attachment file');
+    // Cannot remove attachment file
   }
 
   next();

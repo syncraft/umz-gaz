@@ -1,10 +1,22 @@
 <template>
   <div class="row">
-    <div class="col-6 col-sm-4 col-lg-3 d-flex" v-for="attachment in attachments" :key="attachment.id">      
+    <div
+      class="col-6 col-sm-4 col-lg-3 d-flex"
+      v-for="attachment in attachments"
+      :key="attachment.id"
+    >      
       <div class="card w-100">
         <a :href="attachment.url">
-          <v-attachment class="card-img-top" :id="attachment.id" :link="false" :thumbnail="{ width: 300, height: 300 }"></v-attachment>
-          <div class="card-body text-center" v-if="attachment.name">
+          <v-attachment
+            class="card-img-top"
+            :id="attachment.id"
+            :link="false"
+            :thumbnail="{ width: 300, height: 300 }"
+          />
+          <div
+            class="card-body text-center"
+            v-if="attachment.name"
+          >
             {{ attachment.name.split('.').slice(0, -1).join('.') }}
           </div>
         </a>

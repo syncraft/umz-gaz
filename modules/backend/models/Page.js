@@ -108,8 +108,7 @@ schema.pre('remove', async function(next) {
       await attachment.remove();
     }
   } catch (error) {
-    console.log(error);
-    throw new Error('Cannot remove attachments');
+    // Cannot remove attachments
   }
 
   // Find and remove page children

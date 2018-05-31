@@ -4,9 +4,21 @@
       <div class="container">
         <h3 class="py-5 m-0 umz-font-bold umz-font-wide">{{ root.title }}</h3>
 
-        <div class="row no-gutters umz-font-bold umz-font-wide" @contextmenu="$emit('contextmenu', { event: $event, parent: root.id })">
-          <div class="col-12 col-sm-auto text-nowrap" v-if="!root.redirect" @contextmenu.stop="$emit('contextmenu', { event: $event, id: root.id, parent: root.id })">
-            <nuxt-link :to="root.path" :class="{ disabled: root.disabled }" active-class="active" exact>
+        <div
+          class="row no-gutters umz-font-bold umz-font-wide"
+          @contextmenu="$emit('contextmenu', { event: $event, parent: root.id })"
+        >
+          <div
+            class="col-12 col-sm-auto text-nowrap"
+            v-if="!root.redirect"
+            @contextmenu.stop="$emit('contextmenu', { event: $event, id: root.id, parent: root.id })"
+          >
+            <nuxt-link
+              :to="root.path"
+              :class="{ disabled: root.disabled }"
+              active-class="active"
+              exact
+            >
               {{ (root.titleSubmenu || root.title).toUpperCase() }}
             </nuxt-link>
           </div>
@@ -17,7 +29,12 @@
             :key="page.id"
             @contextmenu.stop="$emit('contextmenu', { event: $event, id: page.id, parent: root.id })"
           >
-            <nuxt-link :to="page.path" :class="{ disabled: page.disabled }" active-class="active" draggable="false">
+            <nuxt-link
+              :to="page.path"
+              :class="{ disabled: page.disabled }"
+              active-class="active"
+              draggable="false"
+            >
               {{ (page.titleSubmenu || page.title).toUpperCase() }}
             </nuxt-link>
           </div>

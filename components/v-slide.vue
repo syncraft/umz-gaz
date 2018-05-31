@@ -1,11 +1,17 @@
 <template>
   <div class="v-slide">
-    <div class="image" :style="style">
+    <div
+      class="image"
+      :style="style"
+    >
       <div class="description">
         <div class="container h-100">
-          <div class="h-100 d-flex align-items-sm-center mt-7 mt-sm-0" :class="classes">
+          <div
+            class="h-100 d-flex align-items-sm-center mt-7 mt-sm-0"
+            :class="classes"
+          >
             <div class="block">
-              <slot></slot>
+              <slot/>
             </div>
           </div>      
         </div>    
@@ -17,9 +23,9 @@
 <script>
 export default {
   props: {
-    id: { type: String },
-    name: { type: String },
-    position: { default: 'left', type: String }
+    id: { type: String, default: '' },
+    name: { type: String, default: '' },
+    position: { type: String, default: 'left' }
   },
 
   computed: {

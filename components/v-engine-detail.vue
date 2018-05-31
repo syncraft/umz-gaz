@@ -3,7 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-4">
-          <v-attachment v-if="image" class="image img-fluid mx-auto mx-sm-0 d-block pb-5 pb-sm-0 px-5 px-sm-0" :id="image"></v-attachment>
+          <v-attachment
+            v-if="image"
+            class="image img-fluid mx-auto mx-sm-0 d-block pb-5 pb-sm-0 px-5 px-sm-0"
+            :id="image"
+          />
         </div>
 
         <div class="col-12 col-sm-8 d-flex flex-column justify-content-around">
@@ -51,12 +55,12 @@ export default {
   },
 
   props: {
-    image: { type: String },
-    info: { type: String },
-    type: { type: String },
-    ecology: {type: String },
-    life: { type: String },
-    power: { type: String }
+    image: { type: String, default: '' },
+    info: { type: String, default: '' },
+    type: { type: String, default: '' },
+    ecology: {type: String, default: '' },
+    life: { type: String, default: '' },
+    power: { type: String, default: '' }
   }
 }
 </script>

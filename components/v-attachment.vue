@@ -1,29 +1,57 @@
 <template>
-  <a v-if="attachment && thumbnail && link" :href="attachment.url" class="d-block">
+  <a
+    v-if="attachment && thumbnail && link"
+    :href="attachment.url"
+    class="d-block"
+  >
     <img :src="url_thumbnail">
   </a>
 
-  <img v-else-if="attachment && thumbnail" :src="url_thumbnail">
+  <img
+    v-else-if="attachment && thumbnail"
+    :src="url_thumbnail"
+  >
 
-  <video v-else-if="attachment && video" controls>
-    <source :src="attachment.url" type="video/mp4">
+  <video
+    v-else-if="attachment && video"
+    controls
+  >
+    <source
+      :src="attachment.url"
+      type="video/mp4"
+    >
     Онлайн просмотр видео не подерживается вашим браузером.
-    <a v-if="link" :href="attachment.url">Скачать</a>.
+    <a
+      v-if="link"
+      :href="attachment.url"
+    >
+      Скачать
+    </a>.
   </video>
 
-  <a v-else-if="attachment && link && image" :href="attachment.url" class="d-block">
+  <a
+    v-else-if="attachment && link && image"
+    :href="attachment.url"
+    class="d-block"
+  >
     <img :src="attachment.url">
   </a>
 
-  <a v-else-if="attachment && link" :href="attachment.url">
-    <template v-if="$slots.default"><slot></slot></template>
+  <a
+    v-else-if="attachment && link"
+    :href="attachment.url"
+  >
+    <template v-if="$slots.default"><slot/></template>
     <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
   </a>
 
-  <img v-else-if="attachment && image" :src="attachment.url">
+  <img
+    v-else-if="attachment && image"
+    :src="attachment.url"
+  >
 
   <span v-else-if="attachment">
-    <template v-if="$slots.default"><slot></slot></template>
+    <template v-if="$slots.default"><slot/></template>
     <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
   </span>
 </template>
@@ -33,7 +61,7 @@ export default {
   props: {
     id: { required: true, type: String },
     link: { default: true, type: Boolean },
-    thumbnail: { type: [ Boolean, Object ] }
+    thumbnail: { default: true, type: [ Boolean, Object ] }
   },
 
   computed: {

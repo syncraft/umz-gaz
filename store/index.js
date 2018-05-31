@@ -67,7 +67,7 @@ export default function() {
         });
       },
 
-      searchPages({}, conditions) {
+      searchPages(_, conditions) {
         return new Promise((resolve, reject) => {
           this.$socket.emit('searchPages', conditions, ({ data, error }) => {
             if (error) {
@@ -202,7 +202,7 @@ export default function() {
         });        
       },
 
-      sendEmail: ({}, { form }) => {
+      sendEmail: (_, { form }) => {
         return new Promise((resolve, reject) => {
           this.$socket.emit('sendEmail', { form }, ({ error }) => {
             if (error) {
@@ -334,4 +334,4 @@ export default function() {
       url: process.env.URL
     }
   });
-};
+}

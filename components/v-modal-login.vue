@@ -1,27 +1,56 @@
 <template>
-  <v-modal v-if="opened" @close="close()">
+  <v-modal
+    v-if="opened"
+    @close="close()"
+  >
     <div slot="header">Вход в режим администрирования</div>
     
-    <form id="v-modal-login" @submit.prevent>
+    <form
+      id="v-modal-login"
+      @submit.prevent
+    >
       <div class="form-group">
         <label class="text-muted">Имя пользователя</label>
-        <input type="text" class="form-control form-control-sm" autocomplete="username" v-model="form.username" @input="error = false">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          autocomplete="username"
+          v-model="form.username"
+          @input="error = false"
+        >
       </div>
       
       <div class="form-group">
         <label class="text-muted">Пароль</label>
-        <input type="password" class="form-control form-control-sm" autocomplete="current-password" v-model="form.password" @input="error = false">
+        <input
+          type="password"
+          class="form-control form-control-sm"
+          autocomplete="current-password"
+          v-model="form.password"
+          @input="error = false"
+        >
       </div>
 
       <transition name="fade">
-        <div v-if="error" class="alert alert-danger" role="alert">
+        <div
+          v-if="error"
+          class="alert alert-danger"
+          role="alert"
+        >
           Неправильное имя пользователя или пароль
         </div>
       </transition>
     </form>
     
     <div slot="footer">
-      <button type="submit" form="v-modal-login" class="btn btn-primary" @click="login()">Войти</button>
+      <button
+        type="submit"
+        form="v-modal-login"
+        class="btn btn-primary"
+        @click="login()"
+      >
+        Войти
+      </button>
     </div>
   </v-modal>
 </template>

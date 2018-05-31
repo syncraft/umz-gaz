@@ -1,6 +1,9 @@
 <template>
-  <section class="container pb-5" @contextmenu="$parent.$emit('contextmenu', { event: $event })">
-    <v-slide-carousel :slides="slides"></v-slide-carousel>
+  <section
+    class="container pb-5"
+    @contextmenu="$parent.$emit('contextmenu', { event: $event })"
+  >
+    <v-slide-carousel :slides="slides"/>
 
     <div class="mt-6">
       <div class="row description mb-3 mb-md-5">
@@ -15,7 +18,7 @@
         </div>
 
         <div class="col-0 col-md-2 d-none d-md-flex justify-content-center">
-          <div class="delimiter"></div>
+          <div class="delimiter"/>
         </div>
 
         <div class="col-12 col-md-5">
@@ -25,7 +28,7 @@
         </div>
       </div>
 
-      <v-engine-list :pages="enginesGaz"></v-engine-list>
+      <v-engine-list :pages="enginesGaz"/>
     </div>
 
     <hr class="my-5">
@@ -43,7 +46,7 @@
         </div>
 
         <div class="col-0 col-md-2 d-none d-md-flex justify-content-center">
-          <div class="delimiter"></div>
+          <div class="delimiter"/>
         </div>
 
         <div class="col-12 col-md-5">
@@ -53,7 +56,7 @@
         </div>
       </div>
 
-      <v-engine-list :pages="enginesUaz"></v-engine-list>
+      <v-engine-list :pages="enginesUaz"/>
     </div>
 
     <v-slide name="7.jpg">
@@ -81,9 +84,15 @@
     </v-slide>
     
     <h5 class="mt-6 mb-4">Новости</h5>
-    <v-news-list :pages="media" fixed></v-news-list>
+    <v-news-list
+      :pages="media"
+      fixed
+    />
 
-    <v-content v-if="$store.getters.page && $store.getters.page.content" :content="$store.getters.page.content"/>
+    <v-content
+      v-if="$store.getters.page && $store.getters.page.content"
+      :content="$store.getters.page.content"
+    />
   </section>
 </template>
 

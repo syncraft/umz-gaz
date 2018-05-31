@@ -1,20 +1,26 @@
 <template>
   <div class="modal">
-    <div class="modal-dialog" :class="{ 'modal-lg': size === 'large', 'modal-sm': size === 'small' }">
+    <div
+      class="modal-dialog"
+      :class="{ 'modal-lg': size === 'large', 'modal-sm': size === 'small' }"
+    >
       <div class="modal-content">
         <div class="modal-header">
-          <slot name="header"></slot>
-          <button class="close" @click="$emit('close')">
-            <span class="fas fa-times fa-xs"></span>
+          <slot name="header"/>
+          <button
+            class="close"
+            @click="$emit('close')"
+          >
+            <span class="fas fa-times fa-xs"/>
           </button>
         </div>
 
         <div class="modal-body">
-          <slot></slot>
+          <slot/>
         </div>
         
         <div class="modal-footer">
-          <slot name="footer"></slot>
+          <slot name="footer"/>
         </div>
       </div>
     </div>
@@ -30,9 +36,7 @@ export default {
   },
 
   props: {
-    size: {
-      type: String
-    }
+    size: { type: String, default: '' }
   }
 }
 </script>

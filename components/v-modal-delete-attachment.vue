@@ -1,12 +1,20 @@
 <template>
   <transition name="fade">
-    <v-modal v-if="opened" @close="close()">
+    <v-modal
+      v-if="opened"
+      @close="close()"
+    >
       <div slot="header">Удаление вложения</div>
       <div>
         Вы хотите удалить вложение «<b>{{ attachment.name }}</b>»?
       </div>
       <div slot="footer">
-        <button class="btn btn-primary" @click="deleteAttachment()">Удалить</button>
+        <button
+          class="btn btn-primary"
+          @click="deleteAttachment()"
+        >
+          Удалить
+        </button>
       </div>
     </v-modal>
   </transition>
@@ -44,8 +52,9 @@ export default {
       
       try {      
         await this.$store.dispatch('deleteAttachments', { attachments: [ this.attachment ] });
+        this.$emit('success');
       } catch (error) {
-        console.error(error);
+        this.$emit('error', error);
       }
     }
   }

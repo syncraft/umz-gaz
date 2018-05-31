@@ -1,15 +1,21 @@
 <template>
-  <div v-if="$store.getters.page" class="container pb-5">
-    <div v-if="root.path === '/media' && $store.getters.page.depth > 1" class="mb-4">
+  <div
+    v-if="$store.getters.page"
+    class="container pb-5"
+  >
+    <div
+      v-if="root.path === '/media' && $store.getters.page.depth > 1"
+      class="mb-4"
+    >
       <div class="row">
         <div class="col d-flex align-items-center text-muted small">
           <span class="pr-4">
-            <span class="far fa-fw fa-clock mr-1"></span>
+            <span class="far fa-fw fa-clock mr-1"/>
             <span>{{ date }}</span>
           </span>
 
           <span v-if="source">
-            <span class="fas fa-fw fa-external-link-alt mr-1"></span>
+            <span class="fas fa-fw fa-external-link-alt mr-1"/>
             <a :href="source.url">{{ source.name }}</a>
           </span>
         </div>
@@ -18,8 +24,8 @@
           <v-social
             :title="$store.getters.page.title"
             :url="$store.state.url + $store.getters.page.path"
-            :image="image">
-          </v-social>
+            :image="image"
+          />
         </div>
       </div>
     </div>

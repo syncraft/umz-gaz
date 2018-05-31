@@ -1,5 +1,8 @@
 <template>
-  <div class="v-news-list" @contextmenu="$emit('contextmenu', { event: $event, parent: $store.getters.page.id })">
+  <div
+    class="v-news-list"
+    @contextmenu="$emit('contextmenu', { event: $event, parent: $store.getters.page.id })"
+  >
     <div class="row">
       <div
         class="col-12 col-md-6 col-lg-4 mb-4"
@@ -7,10 +10,20 @@
         :key="page.id"
         @contextmenu.stop="$emit('contextmenu', { event: $event, id: page.id, parent: $store.getters.page.id })"
       >
-        <router-link :to="page.path" class="d-flex flex-column h-100">
+        <router-link
+          :to="page.path"
+          class="d-flex flex-column h-100"
+        >
           <div class="image-container">
-            <img v-if="image(page)" :src="image(page)">
-            <img v-else src="@/assets/images/no-image.jpg">
+            <img
+              v-if="image(page)"
+              :src="image(page)"
+            >
+
+            <img
+              v-else
+              src="@/assets/images/no-image.jpg"
+            >
           </div>
 
           <div style="flex-grow: 1;">
@@ -58,7 +71,11 @@
       </div>
     </div>
 
-    <button v-if="!fixed" @click="$emit('more')" class="more">
+    <button
+      v-if="!fixed"
+      @click="$emit('more')"
+      class="more"
+    >
       Показать еще
     </button>
   </div>

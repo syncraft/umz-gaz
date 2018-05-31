@@ -3,8 +3,15 @@
     <div class="container py-5">
       <div class="row">
         <div class="col-2 col-md-1 align-self-center">
-          <nuxt-link to="/" class="d-flex justify-content-start">
-            <img class="d-block" height="20" src="@/assets/images/logo.png">
+          <nuxt-link
+            to="/"
+            class="d-flex justify-content-start"
+          >
+            <img
+              class="d-block"
+              height="20"
+              src="@/assets/images/logo.png"
+            >
           </nuxt-link>
         </div>
 
@@ -14,14 +21,26 @@
 
         <div class="col">
           <div class="row no-gutters h-100">
-            <div v-for="page in pages" :key="page.id" class="col-6 col-lg-4 my-1">
-              <nuxt-link class="item" :to="page.path">{{ page.title }}</nuxt-link>
+            <div
+              v-for="page in pages"
+              :key="page.id"
+              class="col-6 col-lg-4 my-1"
+            >
+              <nuxt-link
+                class="item"
+                :to="page.path"
+              >
+                {{ page.title }}
+              </nuxt-link>
             </div>
           </div>
         </div>
 
         <div class="col-0 col-md-1 d-none d-md-block align-self-center text-right">
-          <a class="fab fa-github text-white" href="https://github.com/syncraft/umz-gaz.ru"></a>
+          <a
+            class="fab fa-github text-white"
+            href="https://github.com/syncraft/umz-gaz.ru"
+          />
         </div>
       </div>
 
@@ -29,18 +48,32 @@
 
       <div class="row">
         <div class="col-12 col-md-6 d-flex flex-column align-items-center align-items-md-start">
-          <a v-if="manager" class="login text-muted text-center mb-3 mb-md-0" @click="$emit('logout')">
+          <a
+            v-if="manager"
+            class="login text-muted text-center mb-3 mb-md-0"
+            @click="$emit('logout')"
+          >
             Выйти из режима администрирования
           </a>
 
-          <a v-else class="login text-muted text-center mb-3 mb-md-0" @click="$emit('login')">
+          <a
+            v-else
+            class="login text-muted text-center mb-3 mb-md-0"
+            @click="$emit('login')"
+          >
             Войти в режим администрирования
           </a>
         </div>
 
         <div class="col-12 col-md-6 d-flex flex-column align-items-center align-items-md-end">
           <div class="text-muted">
-            2006 - {{ new Date().getFullYear() }} © <a class="text-muted" href="http://umz-gaz.ru">Ульяновский моторный завод</a>
+            2006 - {{ new Date().getFullYear() }} ©
+            <a
+              class="text-muted"
+              href="http://umz-gaz.ru"
+            >
+              Ульяновский моторный завод
+            </a>
           </div>
         </div>
       </div>

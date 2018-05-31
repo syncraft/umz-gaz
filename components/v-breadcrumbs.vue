@@ -3,13 +3,26 @@
     <div class="container">
       <ul class="breadcrumb text-muted m-0 py-2">
         <li class="breadcrumb-item">
-          <router-link class="text-muted" to="/">{{ home.title }}</router-link>
+          <router-link
+            class="text-muted"
+            to="/">{{ home.title }}
+          </router-link>
         </li>
 
         <template v-if="last.path !== '/'">
-          <li class="breadcrumb-item" v-for="(page, index) in pages" v-if="page" :key="page.id">
+          <li
+            class="breadcrumb-item"
+            v-for="(page, index) in pages"
+            v-if="page"
+            :key="page.id"
+          >
             <template v-if="index < (pages.length - 1)">
-              <router-link class="text-muted" :to="page.path">{{ page.title }}</router-link>
+              <router-link
+                class="text-muted"
+                :to="page.path"
+              >
+                {{ page.title }}
+              </router-link>
             </template>
 
             <template v-else>

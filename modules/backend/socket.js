@@ -39,14 +39,14 @@ module.exports = function(server) {
         try {
           await unlink(`${process.env.ATTACHMENTS_DIRECTORY}/${id}`);
         } catch (error) {
-          console.error(error);
+          throw error;
         } finally {
           delete uploads[id];
         }
       }
     }
 
-    socket.on('disconnect', (reason) => {
+    socket.on('disconnect', () => {
       for (const id in uploads) {
         removeUpload(id);
       }

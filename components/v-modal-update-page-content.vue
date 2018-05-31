@@ -1,5 +1,9 @@
 <template>
-  <v-modal v-if="opened && $store.getters.page" @close="close()" size="large">
+  <v-modal
+    v-if="opened && $store.getters.page"
+    @close="close()"
+    size="large"
+  >
     <div slot="header">Изменение содержимого страницы</div>
     <div>
       <div class="card h-100 small">
@@ -8,18 +12,32 @@
         </div>
         
         <div class="card-body">
-          <textarea class="form-control form-control-sm" rows="15" v-model="form.content"></textarea>
+          <textarea
+            class="form-control form-control-sm"
+            rows="15"
+            v-model="form.content"
+          />
         </div>
       </div>
 
-      <div class="card h-100 small mt-3 attachments" v-if="attachmentsSorted.length > 0">
+      <div
+        class="card h-100 small mt-3 attachments"
+        v-if="attachmentsSorted.length > 0"
+      >
         <div class="card-header">
           Вложения
         </div>
         
-        <div class="card-body" style="overflow-x: auto;">
+        <div
+          class="card-body"
+          style="overflow-x: auto;"
+        >
           <div class="row flex-nowrap">
-            <div class="col-6 col-lg-4 col-xl-3" v-for="attachment in attachmentsSorted" :key="attachment.id">
+            <div
+              class="col-6 col-lg-4 col-xl-3"
+              v-for="attachment in attachmentsSorted"
+              :key="attachment.id"
+            >
               <div
                 class="card"
                 :class="{ 'border-primary': $store.getters.page.image === attachment.id }"
@@ -33,7 +51,12 @@
                     <div class="small">{{ attachment.id }}</div>
                   </div>
                 </div>
-                <img class="card-img-bottom" :src="attachment.url_thumbnail" @click="download(attachment)" draggable="false">
+                <img
+                  class="card-img-bottom"
+                  :src="attachment.url_thumbnail"
+                  @click="download(attachment)"
+                  draggable="false"
+                >
               </div>
             </div>
           </div>
@@ -41,10 +64,33 @@
       </div>
     </div>
     
-    <div class="w-100 text-right" slot="footer">
-      <input ref="upload" class="d-none" type="file" @change="uploadAttachments($event)" multiple>
-      <button type="button" class="btn btn-primary btn-sm" @click="$refs.upload.click()">Вложить</button>
-      <button type="button" class="btn btn-primary btn-sm" @click="updatePage()">Сохранить</button>
+    <div
+      class="w-100 text-right"
+      slot="footer"
+    >
+      <input
+        ref="upload"
+        class="d-none"
+        type="file"
+        @change="uploadAttachments($event)"
+        multiple
+      >
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        @click="$refs.upload.click()"
+      >
+        Вложить
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        @click="updatePage()"
+      >
+        Сохранить
+      </button>
     </div>
   </v-modal>
 </template>
@@ -105,7 +151,7 @@ export default {
           ]
         });
       } catch (error) {
-        console.error(error);
+        this.$emit('error', error);
       }
 
       this.close();
@@ -116,7 +162,7 @@ export default {
         try {
           await this.$store.dispatch('uploadAttachments', { files: event.target.files, page: this.$store.getters.page });
         } catch (error) {
-          console.error(error);
+          this.$emit('error', error);
         }
       }
     }

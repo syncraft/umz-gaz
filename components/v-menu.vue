@@ -1,20 +1,30 @@
 <template>
   <div>
-    <nav class="fixed-top" @contextmenu="$emit('contextmenu', { event: $event })">
+    <nav
+      class="fixed-top"
+      @contextmenu="$emit('contextmenu', { event: $event })"
+    >
       <div class="container">
         <div class="logo">
           <nuxt-link to="/">
-            <img class="d-block" src="@/assets/images/logo.png">
+            <img
+              class="d-block"
+              src="@/assets/images/logo.png"
+            >
           </nuxt-link>
         </div>
 
         <div class="toggler">
           <button @click="show = !show">
-            <span class="fas fa-bars"></span>
+            <span class="fas fa-bars"/>
           </button>
         </div>
 
-        <transition-group :class="{ show }" name="list" tag="ul">
+        <transition-group
+          :class="{ show }"
+          name="list"
+          tag="ul"
+        >
           <li
             v-for="page in pages"
             v-if="(!manager && !page.disabled) || manager"
@@ -22,7 +32,10 @@
             :class="{ disabled: page.disabled }"
             @contextmenu.stop="$emit('contextmenu', { event: $event, id: page.id })"
           >
-            <nuxt-link :to="page.path" @click.native="close()">
+            <nuxt-link
+              :to="page.path"
+              @click.native="close()"
+            >
               {{ page.title }}
             </nuxt-link>
           </li>

@@ -1,25 +1,47 @@
 <template>
-  <v-modal v-if="opened" @close="close()">
+  <v-modal
+    v-if="opened"
+    @close="close()"
+  >
     <div slot="header">Создание страницы</div>
     <div>
-      <div class="form-group" v-if="pageParent">
+      <div
+        class="form-group"
+        v-if="pageParent"
+      >
         <label class="text-muted">Родитель</label>
-        <input type="text" class="form-control form-control-sm" :value="pageParent.title" disabled>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          :value="pageParent.title"
+          disabled
+        >
       </div>
       
       <div class="form-group">
         <label class="text-muted">Заголовок</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.title">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.title"
+        >
       </div>
       
       <div class="form-group">
         <label class="text-muted">Псевдоним</label>
-        <input type="text" class="form-control form-control-sm" v-model="slug">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="slug"
+        >
       </div>
 
       <div class="form-group">
         <label class="text-muted">Тип страницы</label>
-        <select class="form-control form-control-sm" v-model="type">
+        <select
+          class="form-control form-control-sm"
+          v-model="type"
+        >
           <option value="article">Статья</option>
           <option value="event">Событие</option>
         </select>
@@ -28,18 +50,31 @@
       <template v-if="type === 'event'">
         <div class="form-group">
           <label class="text-muted">Источник</label>
-          <input type="text" class="form-control form-control-sm" v-model="form.source">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            v-model="form.source"
+          >
         </div>
 
         <div class="form-group">
           <label class="text-muted">Дата публикации</label>
-          <input type="datetime-local" class="form-control form-control-sm" v-model="form.datePublished">
+          <input
+            type="datetime-local"
+            class="form-control form-control-sm"
+            v-model="form.datePublished"
+          >
         </div>
       </template>
     </div>
 
     <div slot="footer">
-      <button class="btn btn-primary" @click="createPage()">Создать</button>
+      <button
+        class="btn btn-primary"
+        @click="createPage()"
+      >
+        Создать
+      </button>
     </div>
   </v-modal>
 </template>
@@ -128,7 +163,6 @@ export default {
 
         this.$emit('success');
       } catch (error) {
-        console.error(error);
         this.$emit('error', error);
       }
     }

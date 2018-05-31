@@ -2,19 +2,31 @@
   <div class="v-social">
     <ul class="list-inline list-unstyled p-0 m-0">
       <li class="list-inline-item">
-        <a class="fab fa-fw fa-vk text-white bg-primary" :href="vk"></a>
+        <a
+          class="fab fa-fw fa-vk text-white bg-primary"
+          :href="vk"
+        />
       </li>
 
       <li class="list-inline-item">
-        <a class="fab fa-fw fa-facebook-f text-white bg-primary" :href="fb"></a>
+        <a
+          class="fab fa-fw fa-facebook-f text-white bg-primary"
+          :href="fb"
+        />
       </li>
 
       <li class="list-inline-item">
-        <a class="fab fa-fw fa-odnoklassniki text-white bg-primary" :href="ok"></a>
+        <a
+          class="fab fa-fw fa-odnoklassniki text-white bg-primary"
+          :href="ok"
+        />
       </li>
 
       <li class="list-inline-item">
-        <a class="fab fa-fw fa-twitter text-white bg-primary" :href="twitter"></a>
+        <a
+          class="fab fa-fw fa-twitter text-white bg-primary"
+          :href="twitter"
+        />
       </li>
     </ul>
   </div>
@@ -25,7 +37,7 @@ export default {
   props: {
     url: { type: String, required: true },
     title: { type: String, required: true },
-    image: { type: String }
+    image: { type: String, default: '' }
   },
 
   computed: {

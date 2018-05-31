@@ -1,26 +1,35 @@
 <template>
   <div>
     <header>
-      <v-menu :manager="$store.state.manager" :pages="$store.getters.menu" @contextmenu="contextMenuPage($event)" />
+      <v-menu
+        :manager="$store.state.manager"
+        :pages="$store.getters.menu"
+        @contextmenu="contextMenuPage($event)"
+      />
 
-      <transition name="slide" mode="out-in">
+      <transition
+        name="slide"
+        mode="out-in"
+      >
         <div v-if="$store.getters.page && $store.getters.page.path !== '/'">
           <v-breadcrumbs
             :home="$store.state.pages.find(page => page.path === '/')"
-            :pages="$store.getters.breadcrumbs">
-          </v-breadcrumbs>
+            :pages="$store.getters.breadcrumbs"
+          />
 
           <v-submenu
             class="mb-5"
             :pages="$store.getters.submenu"
             :root="$store.state.pages.find(page => page.id === $store.getters.page.breadcrumbs[0])"
             @contextmenu="contextMenuPage($event)"
-          >
-          </v-submenu>
+          />
         </div>
       </transition>
 
-      <div v-if="$store.getters.page && $store.getters.page.breadcrumbs.length > 2" class="container">
+      <div
+        v-if="$store.getters.page && $store.getters.page.breadcrumbs.length > 2"
+        class="container"
+      >
         <h4 class="m-0 mb-5 umz-font-bold umz-font-wide">{{ $store.getters.page.title || '' }}</h4>
       </div>
     </header>
@@ -36,13 +45,21 @@
       </transition>
     </main>
     
-    <v-footer :manager="$store.state.manager" :pages="$store.getters.menu" @login="login()" @logout="logout()" />
+    <v-footer
+      :manager="$store.state.manager"
+      :pages="$store.getters.menu"
+      @login="login()"
+      @logout="logout()"
+    />
     
     <v-context-menu ref="contextMenu" />
     <v-modal-create-page ref="modalCreatePage" />
     <v-modal-delete-page ref="modalDeletePage" />
     <v-modal-update-page ref="modalUpdatePage" />
-    <v-modal-update-page-content ref="modalUpdatePageContent" @contextmenu="contextMenuAttachment($event)" />
+    <v-modal-update-page-content
+      ref="modalUpdatePageContent"
+      @contextmenu="contextMenuAttachment($event)"
+    />
     <v-modal-delete-attachment ref="modalDeleteAttachment" />
     <v-modal-login ref="modalLogin" />
     <v-modal-logout ref="modalLogout" />

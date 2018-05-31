@@ -1,14 +1,26 @@
 <template>
   <div class="v-engine-list">
-    <transition-group class="row" name="list" tag="div">
+    <transition-group
+      class="row"
+      name="list"
+      tag="div"
+    >
       <div
         class="engine col-6 col-md-4 col-lg-3 mb-4 mb-md-5"
         v-for="page in pages"
         :key="page.id"
         @contextmenu="$emit('contextmenu', { event: $event, id: page.id })"
       >
-        <router-link :to="page.path" class="d-block" draggable="false">
-          <div v-if="image(page)" class="image" :style="{ backgroundImage: `url(${image(page)})` }"></div>
+        <router-link
+          :to="page.path"
+          class="d-block"
+          draggable="false"
+        >
+          <div
+            v-if="image(page)"
+            class="image"
+            :style="{ backgroundImage: `url(${image(page)})` }"
+          />
           <div class="title mt-3">{{ page.title }}</div>
         </router-link>
       </div>

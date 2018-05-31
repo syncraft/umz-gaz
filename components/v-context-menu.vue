@@ -1,7 +1,17 @@
 <template>
   <transition name="fade">
-    <div v-if="opened" class="v-context-menu small" :style="style" v-click-outside="close">
-      <button v-for="item in menu" :key="item.title" @click="item.click(); close()" :disabled="item.disabled">
+    <div
+      v-if="opened"
+      class="v-context-menu small"
+      :style="style"
+      v-click-outside="close"
+    >
+      <button
+        v-for="item in menu"
+        :key="item.title"
+        @click="item.click(); close()"
+        :disabled="item.disabled"
+      >
         {{ item.title }}
       </button>
     </div>

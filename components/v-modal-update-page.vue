@@ -1,49 +1,98 @@
 <template>
-  <v-modal v-if="opened" @close="close()">
+  <v-modal
+    v-if="opened"
+    @close="close()"
+  >
     <div slot="header">Изменение страницы</div>
     <div>
-      <div class="form-group" v-if="pageParent">
+      <div
+        class="form-group"
+        v-if="pageParent"
+      >
         <label class="text-muted">Родитель</label>
-        <input type="text" class="form-control form-control-sm" :value="pageParent.title" disabled>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          :value="pageParent.title"
+          disabled
+        >
       </div>
 
       <div class="form-group">
         <label>Заголовок</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.title">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.title"
+        >
       </div>
 
-      <div v-if="page.depth < 3" class="form-group">
+      <div
+        v-if="page.depth < 3"
+        class="form-group"
+      >
         <label>Заголовок подменю</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.titleSubmenu">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.titleSubmenu"
+        >
       </div>
 
       <div class="form-group">
         <label>Псевдоним</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.slug" :disabled="this.page.component === 'v-home'">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.slug"
+          :disabled="this.page.component === 'v-home'"
+        >
       </div>
 
       <div class="form-group">
         <label class="text-muted">Источник</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.source">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.source"
+        >
       </div>
       
       <div class="form-group">
         <label class="text-muted">Дата публикации</label>
-        <input type="datetime-local" class="form-control form-control-sm" v-model="form.datePublished">
+        <input
+          type="datetime-local"
+          class="form-control form-control-sm"
+          v-model="form.datePublished"
+        >
       </div>
 
       <div class="form-group">
         <label>Переадресация</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.redirect" :disabled="this.page.path === '/'">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.redirect"
+          :disabled="this.page.path === '/'"
+        >
       </div>
 
       <div class="form-group">
         <label>Позиция</label>
-        <input type="text" class="form-control form-control-sm" v-model="form.order">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.order"
+        >
       </div>
     </div>
     <div slot="footer">
-      <button class="btn btn-primary" @click="updatePage()">Сохранить</button>
+      <button
+        class="btn btn-primary"
+        @click="updatePage()"
+      >
+        Сохранить
+      </button>
     </div>
   </v-modal>
 </template>
@@ -112,7 +161,6 @@ export default {
           }]
         });
       } catch (error) {
-        console.error(error);
         this.$emit('error', error);
       }
     }
