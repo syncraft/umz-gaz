@@ -52,6 +52,10 @@
       @logout="logout()"
     />
     
+    <no-ssr>
+      <v-scroll-top/>
+    </no-ssr>
+
     <v-context-menu ref="contextMenu" />
     <v-modal-create-page ref="modalCreatePage" />
     <v-modal-delete-page ref="modalDeletePage" />
@@ -79,6 +83,7 @@ import VModalUpdatePageContent from '~/components/v-modal-update-page-content';
 import VModalDeleteAttachment from '~/components/v-modal-delete-attachment';
 import VModalLogin from '~/components/v-modal-login';
 import VModalLogout from '~/components/v-modal-logout';
+import VScrollTop from '~/components/v-scroll-top';
 
 export default {
   components: {
@@ -93,7 +98,8 @@ export default {
     VModalUpdatePageContent,
     VModalDeleteAttachment,
     VModalLogin,
-    VModalLogout
+    VModalLogout,
+    VScrollTop
   },
 
   head() {
