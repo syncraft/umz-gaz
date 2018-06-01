@@ -81,7 +81,15 @@
       </h6>
     </v-slide>
     
-    <h5 class="mt-6 mb-4">Новости</h5>
+    <h5 class="mt-6 mb-4">
+      <nuxt-link
+        class="text-black"
+        to="/media"
+      >
+        Новости
+      </nuxt-link>
+    </h5>
+
     <v-news-list
       :pages="media"
       fixed
