@@ -52,7 +52,9 @@ export default {
   transition: border 0.2s linear;
 
   a {
+    display: block;
     color: inherit;
+    overflow: hidden;
   }
 
   .card-body {
@@ -65,10 +67,15 @@ export default {
     object-fit: cover;
     overflow: hidden;
     object-position: top center;
+    transition: transform 0.2s linear;
+
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 
   &:hover {
-    border-color: theme-color("primary");
+    background-color: theme-color("light");
   }
 }
 
