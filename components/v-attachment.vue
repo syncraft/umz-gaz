@@ -61,7 +61,7 @@ export default {
   props: {
     id: { required: true, type: String },
     link: { default: true, type: Boolean },
-    thumbnail: { default: true, type: [ Boolean, Object ] }
+    thumbnail: { default: false, type: [ Boolean, Object ] }
   },
 
   computed: {
