@@ -1,25 +1,13 @@
 <template>
   <div class="v-slide-carousel">
-    <transition-group
-      tag="div"
-      name="fade"
-      mode="out-in"
-      class="wrapper"
-    >
-      <div
-        v-for="key in [page]"
-        :key="key"
+    <div class="wrapper">
+      <transition
+        name="fade"
+        mode="in-out"
       >
-        <v-slide
-          class="position-absolute"
-          :name="slide.attachment"
-          :position="index % 2 === 0 ? 'right' : 'left'"
-        >
-          <h1 class="font-weight-bold mb-5">{{ slide.title.toUpperCase() }}</h1>
-          <h4 class="font-weight-bold">{{ slide.description }}</h4>
-        </v-slide>
-      </div>
-    </transition-group>
+        <component :is="component"/>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -47,6 +35,24 @@ export default {
 
     slide() {
       return this.slides[this.index];
+    },
+
+    component() {
+      return {
+        components: {
+          VSlide
+        },
+        template: `
+          <v-slide
+            class="position-absolute"
+            name="${ this.slide.attachment }"
+            position="${ this.index % 2 === 0 ? 'right' : 'left' }"
+          >
+            <h1 class="font-weight-bold mb-5">${ this.slide.title.toUpperCase() }</h1>
+            <h4 class="font-weight-bold">${ this.slide.description }</h4>
+          </v-slide>
+        `
+      };
     }
   },
 
