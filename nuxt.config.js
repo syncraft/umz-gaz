@@ -1,6 +1,8 @@
 module.exports = {
   head: {
-    titleTemplate: 'УМЗ - %s',
+    titleTemplate: (title) => {
+      return title ? `${title} - Ульяновский моторный завод` : 'Ульяновский моторный завод';
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
