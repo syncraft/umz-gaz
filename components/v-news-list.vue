@@ -146,10 +146,6 @@ export default {
         background-size: cover;
         background-position: center;
         background-image: url('~/assets/images/no-image.jpg');
-
-        &:hover {
-          transform: scale(1.03);
-        }
       }
     }
   
@@ -181,6 +177,10 @@ export default {
 
     &:hover {
       background-color: theme-color("light");
+
+      .image {
+        transform: scale(1.03);
+      }
     }
   }
 
