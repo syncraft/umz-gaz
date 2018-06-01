@@ -59,6 +59,7 @@ module.exports = {
   },
 
   plugins: [
+    '~/plugins/vuex-router-sync',
     '~/plugins/socket',
     '~/plugins/prefetch',
     {
