@@ -1,16 +1,14 @@
 export default function(context, inject) {
   inject('prefetch', async function() {
-    await this.store.dispatch('fetchPage', { path: this.context.route.path });
-    this.store.commit('updatePath', { path: this.context.route.path });
+    let page = await this.store.dispatch('fetchPage', { path: this.context.route.path });
   
-    if (this.store.getters.page) {
-      if (this.store.getters.page.redirect) {
-        this.context.redirect(this.store.getters.page.redirect);
-        await this.store.dispatch('fetchPage', { path: this.store.getters.page.redirect });
-        this.store.commit('updatePath', { path: this.context.route.path });
+    if (page) {
+      if (page.redirect) {
+        this.context.redirect(page.redirect);
+        page = await this.store.dispatch('fetchPage', { path: page.redirect });
       }
-  
-      await this.store.dispatch('fetchSubmenu');
+
+      await this.store.dispatch('fetchSubmenu', { parent: page.breadcrumbs[0] });
     } else {
       this.context.error({ statusCode: 404, message: 'Page not found'});
     }

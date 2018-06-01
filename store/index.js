@@ -39,10 +39,10 @@ export default function() {
         });
       },
 
-      fetchSubmenu({ commit, dispatch, getters }) {
+      fetchSubmenu({ commit, dispatch }, { parent }) {
         return new Promise(async (resolve, reject) => {
           try {
-            const pages = await dispatch('searchPages', { parent: getters.page.breadcrumbs[0], projection: '-content' });
+            const pages = await dispatch('searchPages', { parent, projection: '-content' });
             commit('updatePages', { pages });
             resolve(pages);
           } catch (error) {
@@ -58,9 +58,10 @@ export default function() {
 
             if (pages.length > 0) {
               commit('updatePages', { pages });
+              resolve(pages[0]);
+            } else {
+              resolve();
             }
-
-            resolve(pages);
           } catch (error) {
             reject(error);
           }
@@ -248,12 +249,12 @@ export default function() {
 
     getters: {
       page(state) {
-        return state.pages.find(page => page.path === state.path);
+        return state.pages.find(page => page.path === state.route.path);
       },
 
       children(state) {
         return state.pages
-          .filter(page => RegExp(`${state.path}/.+`).test(page.path))
+          .filter(page => RegExp(`${state.route.path}/.+`).test(page.path))
           .sort((a, b) => a.order - b.order);
       },
 
@@ -285,10 +286,6 @@ export default function() {
     },
 
     mutations: {
-      updatePath(state, { path }) {
-        state.path = path;
-      },
-
       updatePages(state, { pages }) {
         pages.forEach((page) => {
           const index = state.pages.findIndex(value => value.id === page.id);
@@ -329,7 +326,6 @@ export default function() {
     state: {
       manager: false,
       token: {},
-      path: '',
       pages: [],
       url: process.env.URL
     }
