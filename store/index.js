@@ -127,7 +127,7 @@ export default function() {
       uploadAttachments({ commit, state }, { files, page }) {
         const token = state.token;
         
-        function uploadData(file, offset, length, id) {
+        const uploadData = (file, offset, length, id) => {
           return new Promise((resolve, reject) => {
             const reader = new FileReader();
             const blob = file.slice(offset, length);
@@ -302,7 +302,7 @@ export default function() {
       },
 
       deletePages: (state, { pages }) => {
-        function deletePage(page) {
+        const deletePage = (page) => {
           const index = state.pages.findIndex(value => value.id === page.id);
           state.pages.splice(index, 1);
           state.pages.forEach(value => value.parent === page.id && deletePage(value));
