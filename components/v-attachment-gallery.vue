@@ -68,14 +68,14 @@ export default {
     overflow: hidden;
     object-position: top center;
     transition: transform 0.2s linear;
-
-    &:hover {
-      transform: scale(1.03);
-    }
   }
 
   &:hover {
     background-color: theme-color("light");
+
+    .card-img-top {
+      transform: scale(1.03);
+    }
   }
 }
 
