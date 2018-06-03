@@ -4,12 +4,16 @@
     :href="attachment.url"
     class="d-block"
   >
-    <img :src="url_thumbnail">
+    <img
+      :src="url_thumbnail"
+      :alt="name"
+    >
   </a>
 
   <img
     v-else-if="attachment && thumbnail"
     :src="url_thumbnail"
+    :alt="name"
   >
 
   <video
@@ -34,7 +38,10 @@
     :href="attachment.url"
     class="d-block"
   >
-    <img :src="attachment.url">
+    <img
+      :src="attachment.url"
+      :alt="name"
+    >
   </a>
 
   <a
@@ -42,17 +49,18 @@
     :href="attachment.url"
   >
     <template v-if="$slots.default"><slot/></template>
-    <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
+    <template v-else>{{ name }}</template>
   </a>
 
   <img
     v-else-if="attachment && image"
     :src="attachment.url"
+    :alt="name"
   >
 
   <span v-else-if="attachment">
     <template v-if="$slots.default"><slot/></template>
-    <template v-else>{{ attachment.name.split('.').slice(0, -1).join('.') }}</template>
+    <template v-else>{{ name }}</template>
   </span>
 </template>
 
@@ -109,6 +117,10 @@ export default {
       } else {
         return this.attachment.url_thumbnail;
       }
+    },
+
+    name() {
+      return this.attachment.name.split('.').slice(0, -1).join('.');
     }
   }  
 }

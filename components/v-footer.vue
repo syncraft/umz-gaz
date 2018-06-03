@@ -11,6 +11,7 @@
               class="d-block"
               height="20"
               src="@/assets/images/logo.png"
+              alt="logo"
             >
           </nuxt-link>
         </div>

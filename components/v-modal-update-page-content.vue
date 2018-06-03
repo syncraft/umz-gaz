@@ -54,6 +54,7 @@
                 <img
                   class="card-img-bottom"
                   :src="attachment.url_thumbnail"
+                  :alt="attachment.name"
                   @click="download(attachment)"
                   draggable="false"
                 >

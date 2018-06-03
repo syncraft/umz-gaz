@@ -10,6 +10,7 @@
             <img
               class="d-block"
               src="@/assets/images/logo.png"
+              alt="logo"
             >
           </nuxt-link>
         </div>
