@@ -28,7 +28,7 @@ export default {
     },
 
     handler() {
-      this.show = window.scrollY > 400;
+      this.show = window.pageYOffset > 400;
     }
   },
 
