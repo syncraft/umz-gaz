@@ -59,6 +59,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/styles/variables";
+
 .v-engine-list {
   min-height: 10rem;
 
