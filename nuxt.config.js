@@ -45,7 +45,7 @@ module.exports = {
 
   loading: {
     color: 'rgb(200, 0, 0)',
-    height: '4px'
+    height: '3px'
   },
 
   modules: [
