@@ -72,7 +72,7 @@ export default {
 
     .image {
       width: 100%;
-      height: 200px;
+      height: 150px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -93,6 +93,16 @@ export default {
 
       .image {
         transform: scale(1.03);
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .v-engine-list {
+    .engine {
+      .image {
+        height: 200px;
       }
     }
   }
