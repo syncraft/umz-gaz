@@ -3,10 +3,14 @@
     <nav
       class="fixed-top"
       @contextmenu="$emit('contextmenu', { event: $event })"
+      v-click-outside="close"
     >
       <div class="container">
         <div class="logo">
-          <nuxt-link to="/">
+          <nuxt-link
+            to="/"
+            @click.native="close()"
+          >
             <img
               class="d-block"
               src="@/assets/images/logo.png"
@@ -47,7 +51,13 @@
 </template>
 
 <script>
+import ClickOutside from '~/directives/ClickOutside';
+
 export default {
+  directives: {
+    ClickOutside
+  },
+
   props: {
     manager: {
       default: false,
