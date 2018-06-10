@@ -7,9 +7,9 @@
       v-if="root.path === '/media' && $store.getters.page.depth > 1"
       class="mb-4"
     >
-      <div class="row">
-        <div class="col d-flex align-items-center text-muted small">
-          <span class="pr-4">
+      <div class="row no-gutters">
+        <div class="col-8 d-flex align-items-center text-muted small">
+          <span class="pr-3">
             <span class="far fa-fw fa-clock mr-1"/>
             <span>{{ date }}</span>
           </span>
@@ -20,7 +20,7 @@
           </span>
         </div>
 
-        <div class="col d-flex align-items-center justify-content-end">
+        <div class="col-4 d-flex align-items-center justify-content-end">
           <v-social
             :title="$store.getters.page.title"
             :url="$store.state.url + $store.getters.page.path"
