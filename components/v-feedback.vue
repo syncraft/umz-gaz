@@ -61,7 +61,7 @@
                       class="form-check-input"
                       v-model="form.check"
                     >
-                    Я соглашаюсь с <nuxt-link to="/">политикой в отношении обработки данных</nuxt-link>
+                    Я соглашаюсь с <a href="/policy.pdf">политикой в отношении обработки данных</a>
                   </label>
                 </div>
 
