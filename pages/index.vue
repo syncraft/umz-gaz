@@ -186,6 +186,15 @@ export default {
       })
     });
 
+    // Fetch /media/{category}
+    store.commit('updatePages', {
+      pages: await store.dispatch('searchPages', {
+        path: '/media/.+',
+        depth: 2
+      })
+    });
+
+    // Fetch /media/{category} children
     store.commit('updatePages', {
       pages: await store.dispatch('searchPages', {
         path: '/media/.+',
