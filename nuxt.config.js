@@ -49,7 +49,17 @@ module.exports = {
   },
 
   modules: [
-    '~/modules/backend'
+    '~/modules/backend',
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '25616438',
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true
+      }
+    ]
   ],
 
   // Dirty trick to bypass Nuxt "bug" that sometimes ignoring 'listen' hooks
