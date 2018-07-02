@@ -23,7 +23,7 @@ export default {
 
   methods: {
     async sendEmail({ form }) {
-      this.$store.dispatch('sendEmail', { form });
+      await this.$store.dispatch('sendEmail', { form });
     }
   },
 

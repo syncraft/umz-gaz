@@ -313,32 +313,30 @@ module.exports = function(server) {
     });
 
     socket.on('sendEmail', async ({ form }, callback) => {
-      let error;
-
-      try {
-        sendmail(
-          {
-            from: `noreply@${url.parse(process.env.URL).hostname}`,
-            to: 'zyxd@syncraft.ru',
-            subject: 'Сообщение с сайта umz-gaz.ru',
-            text: `
-              Отправитель: ${form.name}
-              Телефон: ${form.phone}
-              E-mail: ${form.email}
-              ${form.company ? `Компания: ${form.company}` : ''}
-    
-              Сообщение:
-              ${form.message}
-            `
+      sendmail({
+        silent: true
+      })(
+        {
+          from: `noreply@${url.parse(process.env.URL).hostname}`,
+          to: 'zyxd@syncraft.ru',
+          subject: 'Сообщение с сайта umz-gaz.ru',
+          text: `
+            Отправитель: ${form.name}
+            Телефон: ${form.phone}
+            E-mail: ${form.email}
+            ${form.company ? `Компания: ${form.company}` : ''}
+  
+            Сообщение:
+            ${form.message}
+          `
+        },
+        
+        function(error) {
+          if (callback) {
+            callback({ error });
           }
-        );
-      } catch (e) {
-        error = e.message;
-      } finally {
-        if (callback) {
-          callback({ error });
         }
-      }
+      );
     });
 
     socket.on('login', async ({ username, password }, callback) => {
