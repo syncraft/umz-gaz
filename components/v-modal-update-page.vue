@@ -131,7 +131,7 @@ export default {
         datePublished: moment(this.page.datePublished).format('YYYY-MM-DDTHH:mm:ss'),
         order: this.page.order,
         redirect: this.page.redirect,
-        slug: this.pageParent && this.pageParent.component === 'v-news' ? this.page.slug.split('/').pop() : this.page.slug,
+        slug: this.page.slug,
         source: this.page.source,
         title: this.page.title,
         titleSubmenu: this.page.titleSubmenu
