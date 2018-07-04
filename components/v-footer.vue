@@ -71,7 +71,7 @@
             2006 - {{ new Date().getFullYear() }} ©
             <a
               class="text-muted"
-              href="http://umz-gaz.ru"
+              href="https://umz-gaz.ru"
             >
               Ульяновский моторный завод
             </a>
