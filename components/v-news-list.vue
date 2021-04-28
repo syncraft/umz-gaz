@@ -17,7 +17,7 @@
           <div class="image-container">
             <div
               class="image"
-              :style="image(page) && { 'background-image': `url('${image(page)})'` }"
+              :style="image(page) && { 'background-image': `url('${image(page)}')` }"
             />
           </div>
 
