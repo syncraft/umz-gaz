@@ -108,7 +108,7 @@ export default {
         if (this.form.slug) {
           return this.form.slug;
         } else {
-          return slugify(this.form.title);
+          return slugify(this.form.title).toLowerCase();
         }
       },
 
