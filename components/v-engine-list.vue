@@ -19,8 +19,9 @@
           <div
             v-if="image(page)"
             class="image"
-            :style="{ backgroundImage: `url(${image(page)})` }"
+            :style="{ backgroundImage: `url('${image(page)}.thumbnail.png?width=300&height=300')` }"
           />
+
           <div class="title mt-3">{{ page.title }}</div>
         </router-link>
       </div>
@@ -76,7 +77,7 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      filter: drop-shadow(0 0 4px #777);
+      filter: drop-shadow(0 0 2px #777);
       will-change: filter;
       transition: all 0.1s linear;
     }
