@@ -7,6 +7,7 @@
             v-if="image"
             class="image img-fluid mx-auto mx-sm-0 d-block pb-5 pb-sm-0 px-5 px-sm-0"
             :id="image"
+            :thumbnail="{ width: 500, height: 500, ext: 'png' }"
           />
         </div>
 
