@@ -94,7 +94,7 @@ export default {
   }
 
   .unit {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     margin-top: 0.3rem;
     padding-left: 0.3rem;
   }
@@ -107,7 +107,7 @@ export default {
     }
 
     .unit {
-      font-size: 0.5rem;
+      font-size: 0.7rem;
       margin-top: 0.45rem;
     }
   }
@@ -120,7 +120,7 @@ export default {
     }
 
     .unit {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       margin-top: 0.6rem;
     }
   }
@@ -133,7 +133,7 @@ export default {
     }
 
     .unit {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       margin-top: 0.85rem;
     }
   }
