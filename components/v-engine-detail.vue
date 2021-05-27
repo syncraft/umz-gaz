@@ -79,7 +79,7 @@ export default {
   font-family: "geometriamedium", Arial, FreeSans, sans-serif;
 
   .image {
-    filter: drop-shadow(0px 0px 10px #777);
+    filter: drop-shadow(0px 0px 5px #777);
   }
 
   .info, .type {
