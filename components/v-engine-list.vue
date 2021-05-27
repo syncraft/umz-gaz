@@ -76,7 +76,8 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      filter: drop-shadow(5px 10px 10px #777);
+      filter: drop-shadow(0 0 4px #777);
+      will-change: filter;
       transition: all 0.1s linear;
     }
 
