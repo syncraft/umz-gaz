@@ -5,12 +5,12 @@ const ffmpeg = require('fluent-ffmpeg');
 const Attachment = require('./models/Attachment');
 const app = require('express')();
 
-app.get('/:id/:name.thumbnail.jpg', async (request, response, next) => {
+app.get('/:id/:name.thumbnail.:ext(jpg|png)', async (request, response, next) => {
   try {
     const attachment = await Attachment.findOne({ _id: request.params.id, name: request.params.name });
-    const file = `${process.env.ATTACHMENTS_DIRECTORY}/${attachment.id}`;
 
     if (attachment) {
+      const file = `${process.env.ATTACHMENTS_DIRECTORY}/${attachment.id}`;
       const etagGenerated = etag(attachment.url + JSON.stringify(request.query));
       let width = request.query.width ? parseInt(request.query.width) : 200;
       let height = request.query.height ? parseInt(request.query.height) : 200;
@@ -56,12 +56,17 @@ app.get('/:id/:name.thumbnail.jpg', async (request, response, next) => {
   
         default:
           try {
-            gm(path.resolve(file))
+            let gm_state = gm(path.resolve(file))
+
+            if (request.params.ext === 'jpg') {
+              gm_state = gm_state.flatten()
+            }
+
+            gm_state
               .resize(width, height)
               .noProfile()
               .scene(1)
-              .flatten()
-              .stream('jpg')
+              .stream(request.params.ext)
               .on('error', (error) => next({ code: 500, message: error.message }))
               .on('data', () => written = true)
               .on('end', () => {
