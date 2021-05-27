@@ -98,7 +98,7 @@ export default {
     },
 
     url_thumbnail() {
-      if (this.thumbnail && (this.thumbnail.width || this.thumbnail.height)) {
+      if (this.thumbnail) {
         let query = '?';
 
         if (this.thumbnail.width) {
@@ -113,9 +113,9 @@ export default {
           query += `height=${this.thumbnail.height}`;
         }
 
-        return `${this.attachment.url_thumbnail}${query}`;
+        return `${this.attachment.url}.thumbnail.${this.thumbnail.ext || 'jpg'}${query}`;
       } else {
-        return this.attachment.url_thumbnail;
+        return this.attachment.url;
       }
     },
 
