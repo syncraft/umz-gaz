@@ -10,7 +10,7 @@
     <v-engine-list
       class="mt-6"
       :pages="$store.getters.children.filter(page => page.depth === 3)"
-      @contextmenu="$parent.$emit('contextmenu', $event)"
+      @contextmenu="$parent.$emit('contextmenupage', $event)"
     />
   </div>
 </template>
