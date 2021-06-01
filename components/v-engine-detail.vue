@@ -1,5 +1,5 @@
 <template>
-  <div class="v-engine-detail d-flex py-5">
+  <div class="v-engine-detail d-flex py-3">
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-4">
@@ -78,10 +78,6 @@ export default {
   margin-right: -50vw;
   background-color: white;
   font-family: "geometriamedium", Arial, FreeSans, sans-serif;
-
-  .image {
-    filter: drop-shadow(0px 0px 3px #777);
-  }
 
   .info, .type {
     font-size: 1.3rem;
