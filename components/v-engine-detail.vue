@@ -3,11 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-4">
-          <v-attachment
+          <v-attachment-slider
             v-if="image"
-            class="image img-fluid mx-auto mx-sm-0 d-block pb-5 pb-sm-0 px-5 px-sm-0"
-            :id="image"
-            :thumbnail="{ width: 500, height: 500, ext: 'png' }"
+            :images="image"
           />
         </div>
 
@@ -49,14 +47,16 @@
 
 <script>
 import VAttachment from '~/components/v-attachment';
+import VAttachmentSlider from '~/components/v-attachment-slider';
 
 export default {
   components: {
-    VAttachment
+    VAttachment,
+    VAttachmentSlider
   },
 
   props: {
-    image: { type: String, default: '' },
+    image: { type: String | Array, default: '' },
     info: { type: String, default: '' },
     type: { type: String, default: '' },
     ecology: {type: String, default: '' },
