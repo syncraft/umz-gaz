@@ -25,7 +25,8 @@ const schema = new mongoose.Schema(
     slug: { type: String },
     source: { type: String },
     title: { required: true, type: String },
-    titleSubmenu: { type: String }
+    titleSubmenu: { type: String },
+    description: { type: String }
   },
   {
     toJSON: {

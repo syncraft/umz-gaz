@@ -40,6 +40,15 @@
       </div>
 
       <div class="form-group">
+        <label>Описание</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          v-model="form.description"
+        >
+      </div>
+
+      <div class="form-group">
         <label>Псевдоним</label>
         <input
           type="text"
@@ -134,7 +143,8 @@ export default {
         slug: this.page.slug,
         source: this.page.source,
         title: this.page.title,
-        titleSubmenu: this.page.titleSubmenu
+        titleSubmenu: this.page.titleSubmenu,
+        description: this.page.description,
       };
     },
 
