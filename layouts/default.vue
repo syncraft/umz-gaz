@@ -105,6 +105,7 @@ export default {
   head() {
     if (this.$store.getters.page) {
       const { title, description, image, attachments } = this.$store.getters.page
+      const { url: image_url } = attachments.find(({ id }) => id === image) || {}
 
       return {
         title: title ? `${title} - Ульяновский моторный завод` : 'Ульяновский моторный завод',
@@ -134,10 +135,7 @@ export default {
           },
           {
             property: 'og:image',
-            content: image
-                  && attachments
-                   ? `${attachments.find(({ id }) => id === image).url}.thumbnail.jpg?width=500&height=500`
-                   : `${this.$store.state.url}/logo.jpg`
+            content: image_url ? `${image_url}.thumbnail.jpg?width=500&height=500` : `${this.$store.state.url}/logo.jpg`
           }
         ],
         link: [
