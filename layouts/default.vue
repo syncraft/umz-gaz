@@ -134,7 +134,10 @@ export default {
           },
           {
             property: 'og:image',
-            content: image && attachments ? attachments.find(({ id }) => id === image).url : `${this.$store.state.url}/logo.jpg`
+            content: image
+                  && attachments
+                   ? `${attachments.find(({ id }) => id === image).url}.thumbnail.jpg?width=500&height=500`
+                   : `${this.$store.state.url}/logo.jpg`
           }
         ],
         link: [
