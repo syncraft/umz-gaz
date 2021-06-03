@@ -37,12 +37,12 @@
           </div>
         </div>
 
-        <div class="col-0 col-md-1 d-none d-md-block align-self-center text-right">
+        <!-- <div class="col-0 col-md-1 d-none d-md-block align-self-center text-right">
           <a
             class="fab fa-github text-white"
             href="https://github.com/syncraft/umz-gaz.ru"
           />
-        </div>
+        </div> -->
       </div>
 
       <hr class="my-4 my-md-5">
