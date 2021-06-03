@@ -122,7 +122,7 @@ export default {
           },
           {
             property: 'og:title',
-            content: 'Ульяновский моторный завод'
+            content: title || 'Ульяновский моторный завод',
           },
           {
             property: 'og:url',
