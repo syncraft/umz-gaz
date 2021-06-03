@@ -103,8 +103,44 @@ export default {
   },
 
   head() {
-    return {
-      title: this.$store.getters.page ? this.$store.getters.page.title : ''
+    if (this.$store.getters.page) {
+      const { title, description, image, attachments } = this.$store.getters.page
+
+      return {
+        title: title ? `${title} - Ульяновский моторный завод` : 'Ульяновский моторный завод',
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          {
+            hid: 'description',
+            name: 'description',
+            content: description || 'Производство бензиновых, газобензиновых автомобильных двигателей и запасных частей к ним'
+          },
+          {
+            property: 'og:locale',
+            content: 'ru_RU'
+          },
+          {
+            property: 'og:title',
+            content: 'Ульяновский моторный завод'
+          },
+          {
+            property: 'og:url',
+            content: this.$store.state.url
+          },
+          {
+            property: 'og:site_name',
+            content: 'umz-gaz.ru'
+          },
+          {
+            property: 'og:image',
+            content: image && attachments ? attachments.find(({ id }) => id === image).url : `${this.$store.state.url}/logo.jpg`
+          }
+        ],
+        link: [
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        ]
+      }
     }
   },
 
