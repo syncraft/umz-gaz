@@ -118,12 +118,6 @@ export default {
     VSlideCarousel
   },
 
-  head() {
-    return {
-      title: ''
-    }
-  },
-
   data: () => ({
     slides: [
       { attachment: '1.jpg', title: 'Продукция', description: 'Бензиновые и газобензиновые автомобильные двигатели «Евро-4» и «Евро-5»' },

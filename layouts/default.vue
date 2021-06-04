@@ -104,8 +104,12 @@ export default {
 
   head() {
     if (this.$store.getters.page) {
-      const { title, description, image, attachments } = this.$store.getters.page
-      const { url: image_url } = attachments.find(({ id }) => id === image) || {}
+      let { path, title, description, image, attachments } = this.$store.getters.page
+      let { url: image_url } = attachments.find(({ id }) => id === image) || {}
+
+      if (path === '/') {
+        title = undefined
+      }
 
       return {
         title: title ? `${title} - Ульяновский моторный завод` : 'Ульяновский моторный завод',
