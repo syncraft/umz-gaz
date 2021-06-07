@@ -19,7 +19,7 @@
           <div
             v-if="image(page)"
             class="image"
-            :style="{ backgroundImage: `url('${image(page)}.thumbnail.jpg?width=500&height=500')` }"
+            :style="{ backgroundImage: `url('${image(page)}.thumbnail.png?width=500&height=500')` }"
           />
 
           <div class="title mt-3">{{ page.title }}</div>
