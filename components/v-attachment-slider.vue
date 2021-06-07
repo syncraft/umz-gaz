@@ -16,7 +16,7 @@
         :key="image"
       >
         <a :href="image">
-          <img :src="image + '.thumbnail.png?width=500&height=500'">
+          <img :src="image + '.thumbnail.jpg?width=500&height=500'">
         </a>
       </Slide>
     </Carousel>
