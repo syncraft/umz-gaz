@@ -84,7 +84,7 @@
     color: black;
     text-align: left;
     margin: 0;
-    padding: 0 0 3px 0;
+    padding: 0 0 4px 0;
     white-space: nowrap;
     text-shadow:
         0.09rem 0 white,
