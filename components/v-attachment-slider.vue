@@ -12,11 +12,12 @@
       :pagination-padding=5
     >
       <Slide
-        v-for="image in images_url"
-        :key="image"
+        v-for="{url, name, id} in images_attachments"
+        :key="id"
       >
-        <a :href="image">
-          <img :src="image + '.thumbnail.jpg?width=500&height=500'">
+        <a :href="url">
+          <img :src="url + '.thumbnail.jpg?width=500&height=500'">
+          <h1>{{ name.split('.').slice(0, -1).join('.') }}</h1>
         </a>
       </Slide>
     </Carousel>
@@ -38,14 +39,13 @@
     },
 
     computed: {
-      images_url() {
+      images_attachments() {
         if (this.$store.getters.page) {
           if (this.images instanceof Array) {
             return this.images
               .map(image => this.$store.getters.page.attachments.find(({ id }) => id === image))
-              .map(({ url }) => url)
           } else {
-            return [this.$store.getters.page.attachments.find(({ id }) => id === this.images).url]
+            return [this.$store.getters.page.attachments.find(({ id }) => id === this.images)]
           }
         }
       }
@@ -61,6 +61,7 @@
     padding: 0;
     width: 100%;
     height: 100%;
+    position: relative;
   }
 
   img {
@@ -69,5 +70,20 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
+  }
+
+  h1 {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+    font-family: "geometrialight", Arial, FreeSans, sans-serif;
+    color: black;
+    text-align: left;
+    margin: 0;
+    padding-bottom: 5px;
   }
 </style>
