@@ -9,7 +9,7 @@
       pagination-color="#bbb"
       pagination-active-color="#777"
       pagination-position="bottom-overlay"
-      :pagination-padding=5
+      :pagination-padding=3
     >
       <Slide
         v-for="{url, name, id} in images_attachments"
