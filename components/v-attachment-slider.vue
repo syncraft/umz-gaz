@@ -14,10 +14,14 @@
       <Slide
         v-for="{url, name, id} in images_attachments"
         :key="id"
+        :set="name = name.split('.').slice(0, -1).join('.')"
       >
         <a :href="url">
-          <img :src="url + '.thumbnail.jpg?width=500&height=500'">
-          <h1>{{ name.split('.').slice(0, -1).join('.') }}</h1>
+          <img
+            :src="url + '.thumbnail.jpg?width=500&height=500'"
+            :alt="name"
+          >
+          <h1>{{ name }}</h1>
         </a>
       </Slide>
     </Carousel>
