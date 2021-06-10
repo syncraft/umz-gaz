@@ -4,7 +4,7 @@
       :per-page="1"
       :mouse-drag="false"
       :autoplay="true"
-      :autoplay-timeout=4000
+      :autoplay-timeout=8000
       :loop="true"
       pagination-color="#bbb"
       pagination-active-color="#777"
@@ -78,12 +78,18 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: normal;
     font-family: "geometrialight", Arial, FreeSans, sans-serif;
     color: black;
     text-align: left;
     margin: 0;
-    padding-bottom: 5px;
+    padding: 0 0 3px 0;
+    white-space: nowrap;
+    text-shadow:
+        0.09rem 0 white,
+        0 0.09rem white,
+        -0.09rem 0 white,
+        0 -0.09rem white;
   }
 </style>
