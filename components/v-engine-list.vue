@@ -9,7 +9,7 @@
         class="engine col-6 col-md-4 col-lg-3 mb-4 mb-md-5"
         v-for="page in pages"
         :key="page.id"
-        @contextmenu.stop="$emit('contextmenu', { event: $event, id: page.id })"
+        @contextmenu.stop="$emit('contextmenu', { event: $event, id: page.id, parent: $store.getters.page.id })"
       >
         <router-link
           :to="page.path"
